@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   },
 };
 
+import LoadingScreen from '@/components/LoadingScreen';
+
 export default function RootLayout({
   children,
 }: {
@@ -38,7 +40,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LoadingScreen />
+        {children}
+      </body>
     </html>
   );
 }
