@@ -73,8 +73,11 @@ export default function Navbar() {
             }}
             className="flex items-center group cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
-              <Image src="/favicon.png" alt="AJ Logo" fill className="object-cover" />
+            <div className="flex items-center gap-2.5 px-1">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-all overflow-hidden relative">
+                <Image src="/favicon.png" alt="AJ Logo" fill className="object-cover" />
+              </div>
+              <span className="font-display font-black text-zinc-900 text-base tracking-tighter group-hover:text-indigo-600 transition-colors hidden sm:block">AJ</span>
             </div>
           </a>
 
