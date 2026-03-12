@@ -177,18 +177,18 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 required
-                rows={5}
+                rows={10}
                 placeholder="Tell me about your project or what you need help with..."
-                className="form-input resize-none focus:ring-indigo-500/20 transition-all duration-300"
+                className="form-input resize-none focus:ring-indigo-500/20 transition-all duration-300 min-h-[200px]"
               />
             </motion.div>
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01, y: -2 }}
+              whileTap={{ scale: 0.99 }}
               disabled={status === 'sending' || status === 'sent'}
-              className="w-full h-14 flex items-center justify-center gap-3 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-2xl hover:bg-indigo-600 transition-all duration-300 shadow-xl shadow-zinc-200 hover:shadow-indigo-200/50 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest overflow-hidden relative group"
+              className="w-full h-16 flex items-center justify-center gap-3 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-2xl hover:bg-indigo-600 transition-all duration-300 shadow-xl shadow-zinc-200 hover:shadow-indigo-200/50 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[0.2em] overflow-hidden relative group mt-4"
             >
               <span className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               {status === 'idle' && (
@@ -215,6 +215,15 @@ export default function Contact() {
                 </>
               )}
             </motion.button>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-8 text-center text-[10px] text-zinc-400 uppercase tracking-[0.3em] font-medium"
+            >
+              Typical response time: 24-48 hours
+            </motion.p>
           </motion.form>
 
           {/* Right — Contact info */}
