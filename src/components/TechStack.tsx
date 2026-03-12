@@ -55,28 +55,42 @@ export default function TechStack() {
               </h3>
               <div className="flex flex-col gap-5">
                 {cat.skills.map((skill, si) => (
-                  <div key={skill.name}>
+                  <div key={skill.name} className="relative">
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
-                        <div className="skill-icon-wrap text-zinc-400 group-hover:text-indigo-400 transition-colors">
+                        <motion.div 
+                          className="skill-icon-wrap text-zinc-400 group-hover:text-indigo-400"
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6, ease: "easeInOut" }}
+                        >
                           <Terminal size={14} />
-                        </div>
-                        <span className="text-sm font-semibold text-zinc-700 group-hover:text-zinc-900 transition-colors">{skill.name}</span>
+                        </motion.div>
+                        <span className="text-sm font-semibold text-zinc-700 group-hover:text-zinc-900 transition-colors uppercase tracking-tight">
+                          {skill.name}
+                        </span>
                       </div>
-                      <span className="text-xs text-zinc-400">{skill.level}%</span>
+                      <motion.span 
+                        className="text-[10px] font-bold text-zinc-400 group-hover:text-indigo-500 tabular-nums transition-colors"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        {skill.level}%
+                      </motion.span>
                     </div>
                     {/* Progress bar */}
-                    <div className="h-1 bg-zinc-100 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden border border-zinc-200/50">
                       <motion.div
-                        className="h-full rounded-full group-hover:bg-indigo-500 transition-colors duration-400"
+                        className="h-full rounded-full skill-bar-inner"
                         style={{ backgroundColor: 'rgb(24 24 27)' }}
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{
                           delay: ci * 0.1 + si * 0.08,
-                          duration: 0.8,
-                          ease: [0.4, 0, 0.2, 1],
+                          duration: 1.2,
+                          type: "spring",
+                          stiffness: 50,
+                          damping: 15
                         }}
                       />
                     </div>
