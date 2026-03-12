@@ -75,21 +75,26 @@ export default function Navbar() {
     <>
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.header
+          layout
           initial={{ y: -80, opacity: 0 }}
           animate={{ 
             y: 0, 
             opacity: 1,
-            width: showFullNav ? "auto" : "fit-content"
           }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center gap-2 sm:gap-4 px-2 py-2 rounded-full border transition-all duration-500 will-change-transform ${
-            scrolled
-              ? 'navbar-blur border-zinc-200/80 shadow-xl shadow-zinc-200/40 bg-white/80'
-              : 'bg-white/60 backdrop-blur-md border-zinc-200/40 shadow-lg shadow-zinc-200/20'
+          transition={{ 
+            duration: 0.6, 
+            ease: [0.16, 1, 0.3, 1],
+            layout: { duration: 0.4, ease: "easeOut" }
+          }}
+          className={`pointer-events-auto flex items-center transition-all duration-500 will-change-transform rounded-full border border-zinc-200/80 shadow-xl ${
+            showFullNav ? 'px-2 py-2 py-2 gap-2 sm:gap-4' : 'px-1 py-1 gap-1'
+          } ${
+            scrolled ? 'navbar-blur bg-white/80' : 'bg-white/60 backdrop-blur-md'
           }`}
         >
-          {/* Logo / Avatar - Stays visible but can shrink if needed */}
-          <a
+          {/* Logo / Avatar */}
+          <motion.a
+            layout
             href="#home"
             onClick={(e) => {
               e.preventDefault();
@@ -97,40 +102,46 @@ export default function Navbar() {
             }}
             className="flex items-center group cursor-pointer"
           >
-            <div className="flex items-center gap-2.5 px-1">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-all overflow-hidden relative">
+            <div className={`flex items-center ${showFullNav ? 'gap-2.5 px-1' : 'gap-0'}`}>
+              <motion.div 
+                layout
+                className={`${showFullNav ? 'w-8 h-8 sm:w-9 sm:h-9' : 'w-8 h-8'} rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-all overflow-hidden relative`}
+              >
                 <Image src="/favicon.png" alt="AJ Logo" fill className="object-cover" />
-              </div>
+              </motion.div>
               <AnimatePresence mode="wait">
                 {showFullNav && (
                   <motion.span 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    className="font-display font-black text-zinc-900 text-base tracking-tighter group-hover:text-indigo-600 transition-colors hidden sm:block whitespace-nowrap"
+                    layout
+                    initial={{ opacity: 0, width: 0 }}
+                    animate={{ opacity: 1, width: "auto" }}
+                    exit={{ opacity: 0, width: 0 }}
+                    className="font-display font-black text-zinc-900 text-base tracking-tighter group-hover:text-indigo-600 transition-colors hidden sm:block whitespace-nowrap overflow-hidden"
                   >
                     AJ
                   </motion.span>
                 )}
               </AnimatePresence>
             </div>
-          </a>
+          </motion.a>
 
           {/* Desktop Nav - Hidden when scrolling down */}
           <AnimatePresence>
             {showFullNav && (
               <motion.nav 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="hidden md:flex items-center px-2"
+                layout
+                initial={{ opacity: 0, scale: 0.9, width: 0 }}
+                animate={{ opacity: 1, scale: 1, width: "auto" }}
+                exit={{ opacity: 0, scale: 0.9, width: 0 }}
+                className="hidden md:flex items-center overflow-hidden"
               >
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 px-2">
                   {navLinks.filter(l => l.label !== 'Contact').map((link) => {
                     const sectionId = link.href.replace('#', '');
                     const isActive = activeSection === sectionId;
                     return (
-                      <a
+                      <motion.a
+                        layout
                         key={link.label}
                         href={link.href}
                         onClick={(e) => {
@@ -149,7 +160,7 @@ export default function Navbar() {
                             transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                           />
                         )}
-                      </a>
+                      </motion.a>
                     );
                   })}
                 </div>
@@ -158,67 +169,75 @@ export default function Navbar() {
           </AnimatePresence>
 
           {/* Opportunities / CTA Area */}
-          <div className="flex items-center gap-1">
+          <motion.div layout className="flex items-center">
             <AnimatePresence mode="wait">
               {showFullNav ? (
                 <motion.a
+                  layout
                   key="contact-btn"
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
                     handleLinkClick('#contact');
                   }}
-                  className="bg-zinc-900 text-white text-[13px] font-bold px-6 py-2.5 rounded-full hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 shadow-md shadow-zinc-200"
+                  className="bg-zinc-900 text-white text-[13px] font-bold px-6 py-2.5 rounded-full hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 shadow-md shadow-zinc-200 whitespace-nowrap"
                 >
                   Contact
                 </motion.a>
               ) : (
                 <motion.div
+                  layout
                   key="opportunities-pill"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
-                  className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-emerald-50 border border-emerald-100/50 shadow-sm"
+                  className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-50 border border-emerald-100/50 shadow-sm"
                 >
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-widest whitespace-nowrap">
-                    Available for opportunities
+                  <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest whitespace-nowrap">
+                    Available for work
                   </span>
                 </motion.div>
               )}
             </AnimatePresence>
 
             {/* Hamburger for mobile - only show when full nav is visible */}
-            {showFullNav && (
-              <button
-                className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-full bg-zinc-50 hover:bg-zinc-100 transition-colors"
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-label="Toggle menu"
-              >
-                <motion.span
-                  className="block w-4 h-0.5 bg-zinc-900 rounded-full"
-                  animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 6.5 : 0 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="block w-4 h-0.5 bg-zinc-900 rounded-full"
-                  animate={{ opacity: menuOpen ? 0 : 1 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="block w-4 h-0.5 bg-zinc-900 rounded-full"
-                  animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -6.5 : 0 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </button>
-            )}
-          </div>
+            <AnimatePresence>
+              {showFullNav && (
+                <motion.button
+                  layout
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  className="md:hidden ml-2 w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-full bg-zinc-50 hover:bg-zinc-100 transition-colors"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  <motion.span
+                    className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                    animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 6.5 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.span
+                    className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                    animate={{ opacity: menuOpen ? 0 : 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.span
+                    className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                    animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -6.5 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.button>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </motion.header>
       </div>
 
