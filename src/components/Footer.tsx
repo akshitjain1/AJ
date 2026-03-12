@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowUpRight, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import Image from 'next/image';
 import { personal } from '@/data/portfolio';
 
 const quickLinks = [
@@ -26,8 +27,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center">
-                <span className="font-display font-black text-zinc-900 text-sm">AJ</span>
+              <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center overflow-hidden relative">
+                <Image 
+                  src="/favicon.png" 
+                  alt="AJ Logo" 
+                  fill 
+                  className="object-cover"
+                />
               </div>
               <span className="font-display font-bold text-xl tracking-tight">Akshit Jain</span>
             </div>
