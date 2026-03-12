@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { personal } from '@/data/portfolio';
 
@@ -70,8 +71,13 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }}
             className="flex items-center group cursor-pointer"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-zinc-900 text-white font-display font-bold text-sm border-2 border-white shadow-sm group-hover:scale-105 transition-transform">
-              AJ
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-zinc-900 border-2 border-white shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
+              <Image 
+                src="/favicon.png" 
+                alt="AJ Logo" 
+                fill 
+                className="object-cover"
+              />
             </div>
           </a>
 
