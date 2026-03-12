@@ -30,7 +30,7 @@ export const personal = {
   },
   stats: [
     { label: 'Languages Mastered', value: '5+' },
-    { label: 'Projects Built', value: '11+' },
+    { label: 'Projects Built', value: '12+' },
     { label: 'Certifications', value: '17+' },
     { label: 'LeetCode Solved', value: '100+' },
   ],
@@ -288,6 +288,19 @@ export const projects = [
     github: 'https://github.com/akshitjain1/AUTO-NO.git',
     demo: '',
     featured: false,
+  },
+  {
+    id: 12,
+    title: 'Employee Management System',
+    subtitle: 'Django-based Enterprise Solution',
+    description:
+      'A comprehensive, modern Django-based Employee Management System featuring an integrated public website and multi-role portals for Admins, HR staff, and Employees. Includes attendance tracking with overlap detection, task management with file attachments, leave workflows, and robust security features like OTP verification and account locking.',
+    image: '/projects/ems.png',
+    tags: ['Django', 'Python', 'SQLite', 'Bootstrap', 'Chart.js', 'OTP Auth'],
+    category: 'Web Application',
+    github: 'https://github.com/akshitjain1/Employee_management_system',
+    demo: '',
+    featured: true,
   },
 ];
 
