@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     'AI',
   ],
   authors: [{ name: 'Akshit Jain' }],
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
     title: 'Akshit Jain — ML Engineer & Developer',
     description: 'Machine Learning engineer building impactful AI solutions.',
@@ -40,6 +43,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body>
         <ScrollProgress />
