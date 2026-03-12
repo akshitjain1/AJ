@@ -53,110 +53,111 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? 'navbar-blur border-b border-zinc-200/60 shadow-sm shadow-zinc-100/50 py-3 bg-white/70'
-            : 'bg-white/40 backdrop-blur-md border-b border-zinc-200/40 py-4'
-        }`}
-      >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
-          <div className="flex items-center gap-6 md:gap-10">
-            {/* Logo / Avatar */}
+      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <motion.header
+          initial={{ y: -80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className={`pointer-events-auto flex items-center gap-2 sm:gap-4 pl-2 pr-2 py-2 rounded-full border transition-all duration-500 ${
+            scrolled
+              ? 'navbar-blur border-zinc-200/80 shadow-xl shadow-zinc-200/40 bg-white/80'
+              : 'bg-white/60 backdrop-blur-md border-zinc-200/40 shadow-lg shadow-zinc-200/20'
+          }`}
+        >
+          {/* Logo / Avatar */}
           <a
             href="#home"
-            onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick('#home');
+            }}
             className="flex items-center group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-zinc-900 border-2 border-white shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
-                <Image 
-                  src="/favicon.png" 
-                  alt="AJ Logo" 
-                  fill 
-                  className="object-cover"
-                />
-              </div>
-              <span className="font-display font-black text-zinc-900 text-lg tracking-tighter group-hover:text-indigo-600 transition-colors">AJ</span>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
+              <Image src="/favicon.png" alt="AJ Logo" fill className="object-cover" />
             </div>
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => {
-              const sectionId = link.href.replace('#', '');
-              const isActive = activeSection === sectionId;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleLinkClick(link.href); }}
-                  className={`relative text-sm font-medium transition-colors hover-underline ${
-                    isActive ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute -bottom-0.5 left-0 right-0 h-px bg-zinc-900"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
-              );
-            })}
+          <nav className="hidden md:flex items-center px-2">
+            <div className="flex items-center gap-1">
+              {navLinks.filter(l => l.label !== 'Contact').map((link) => {
+                const sectionId = link.href.replace('#', '');
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleLinkClick(link.href);
+                    }}
+                    className={`relative px-4 py-2 text-[13px] font-semibold transition-all rounded-full hover:bg-zinc-100 ${
+                      isActive ? 'text-zinc-900 bg-zinc-50' : 'text-zinc-500 hover:text-zinc-900'
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute bottom-1 left-4 right-4 h-0.5 bg-zinc-900 rounded-full"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                );
+              })}
+            </div>
           </nav>
-          </div>
 
-          {/* Right Area: CTA and Hamburger */}
-          <div className="flex items-center gap-2">
+          {/* CTA Area */}
+          <div className="flex items-center gap-1">
             <a
               href="#contact"
-              onClick={(e) => { e.preventDefault(); handleLinkClick('#contact'); }}
-              className="bg-zinc-900 text-white text-[13px] font-medium px-5 py-2.5 rounded-full hover:bg-zinc-800 transition-colors hidden sm:block shadow-sm"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('#contact');
+              }}
+              className="bg-zinc-900 text-white text-[13px] font-bold px-6 py-2.5 rounded-full hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 shadow-md shadow-zinc-200"
             >
               Contact
             </a>
 
-            {/* Hamburger */}
+            {/* Hamburger for mobile */}
             <button
-              className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200 transition-colors ml-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <motion.span
-              className="block w-5 h-0.5 bg-zinc-900 rounded-full"
-              animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="block w-5 h-0.5 bg-zinc-900 rounded-full"
-              animate={{ opacity: menuOpen ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="block w-5 h-0.5 bg-zinc-900 rounded-full"
-              animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
-              transition={{ duration: 0.2 }}
-            />
-          </button>
-        </div>
-        </div>
-      </motion.header>
+              className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-full bg-zinc-50 hover:bg-zinc-100 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <motion.span
+                className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 6.5 : 0 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.span
+                className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                animate={{ opacity: menuOpen ? 0 : 1 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.span
+                className="block w-4 h-0.5 bg-zinc-900 rounded-full"
+                animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -6.5 : 0 }}
+                transition={{ duration: 0.2 }}
+              />
+            </button>
+          </div>
+        </motion.header>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 top-[73px] z-40 bg-white/95 backdrop-blur-xl border-b border-zinc-200 shadow-xl overflow-hidden"
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-x-4 top-[88px] z-40 bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-3xl overflow-hidden md:hidden"
           >
             <nav className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
