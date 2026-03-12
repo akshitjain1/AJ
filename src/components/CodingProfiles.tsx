@@ -73,8 +73,8 @@ export default function CodingProfiles() {
     visible: { transition: { staggerChildren: 0.1 } },
   };
   const headItem = {
-    hidden: { opacity: 0, y: 36 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const } },
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
@@ -117,15 +117,15 @@ export default function CodingProfiles() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
               onHoverStart={() => setHoveredId(platform.id)}
               onHoverEnd={() => setHoveredId(null)}
-              style={{
-                borderColor: isHovered ? platform.color + 'a0' : '',
-                boxShadow: isHovered
-                  ? `0 20px 50px -12px ${platform.color}3a`
-                  : '',
-                transform: isHovered ? 'translateY(-7px) scale(1.015)' : '',
-              }}
               className="profile-card group border border-zinc-200 rounded-2xl bg-white p-8
                          transition-all duration-300 flex flex-col h-full cursor-pointer"
+              style={{
+                borderColor: isHovered ? platform.color : 'rgb(228 228 231)',
+                boxShadow: isHovered
+                  ? `0 25px 60px -15px ${platform.color}25`
+                  : '0 4px 20px -4px rgba(0,0,0,0.05)',
+                transform: isHovered ? 'translateY(-10px) scale(1.02)' : '',
+              }}
             >
               {/* Logo + name */}
               <div className="flex items-start justify-between mb-6">

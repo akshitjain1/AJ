@@ -249,56 +249,73 @@ export default function Hero() {
               {/* Center Image — grid cell keeps avatar exactly centered */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.85, y: 40, x: -12 }}
-                animate={{ opacity: 1, scale: 1, y: 8, x: -12 }}
-                transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: [8, 2, 8],
+                  x: -12
+                }}
+                transition={{
+                  opacity: { delay: 0.3, duration: 0.8 },
+                  scale: { delay: 0.3, duration: 0.8 },
+                  y: {
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  x: { delay: 0.3, duration: 0.8 },
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 className="relative z-20 mx-auto my-8 lg:my-0 w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] lg:w-[320px] lg:h-[420px] lg:-mx-12 xl:-mx-16"
               >
                 {/* Scroll-driven morph container — hidden when Unicorn Studio is active */}
                 {unicornState !== 'ready' && (
-                <motion.div
-                  style={{ scale: containerScale, y: containerY }}
-                  className="absolute inset-0"
-                >
-                  {/* Profile photo card — materialises as a real card during scroll */}
-                  <motion.div
-                    style={{ opacity: photoOpacity }}
-                    className="absolute inset-0 rounded-[2rem] overflow-hidden bg-zinc-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]"
-                  >
-                    <Image
-                      src={personal.profileImage}
-                      alt={personal.name}
-                      fill
-                      className="object-cover object-top"
-                      priority
-                    />
-                  </motion.div>
-
-                  {/* Avatar PNG — sharpened, floats, rotates + evaporates on scroll */}
-                  <motion.div
-                    style={{ opacity: avatarOpacity, rotate: avatarRotate, scale: avatarScale }}
-                    className="absolute inset-0"
-                  >
-                    {/* Inner float loop — -6 px subtle professional float */}
+                  <>
                     <motion.div
-                      animate={{ y: [0, -6, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-full h-full"
-                      style={{
-                        filter: 'contrast(1.05) brightness(1.02) drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
-                      } as React.CSSProperties}
+                      style={{ scale: containerScale, y: containerY }}
+                      className="absolute inset-0"
                     >
-                      <Image
-                        src="/avatar.png"
-                        alt="avatar"
-                        fill
-                        className="object-contain"
-                        style={{ imageRendering: 'auto' }}
-                        priority
-                        quality={100}
-                      />
+                      {/* Profile photo card — materialises as a real card during scroll */}
+                      <motion.div
+                        style={{ opacity: photoOpacity }}
+                        className="absolute inset-0 rounded-[2rem] overflow-hidden bg-zinc-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-zinc-200"
+                      >
+                        <Image
+                          src={personal.profileImage}
+                          alt={personal.name}
+                          fill
+                          className="object-cover object-top"
+                          priority
+                        />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                </motion.div>
+
+                    {/* Avatar PNG — sharpened, floats, rotates + evaporates on scroll */}
+                    <motion.div
+                      style={{ opacity: avatarOpacity, rotate: avatarRotate, scale: avatarScale }}
+                      className="absolute inset-0"
+                    >
+                      {/* Inner float loop — -6 px subtle professional float */}
+                      <motion.div
+                        animate={{ y: [0, -6, 0] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                        className="w-full h-full"
+                        style={{
+                          filter: 'contrast(1.05) brightness(1.02) drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
+                        } as React.CSSProperties}
+                      >
+                        <Image
+                          src="/avatar.png"
+                          alt="avatar"
+                          fill
+                          className="object-contain"
+                          style={{ imageRendering: 'auto' }}
+                          priority
+                          quality={100}
+                        />
+                      </motion.div>
+                    </motion.div>
+                  </>
                 )}
               </motion.div>
 

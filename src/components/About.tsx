@@ -84,7 +84,7 @@ export default function About() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* Name + title */}
             <h3 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight text-zinc-900 mb-2">

@@ -15,7 +15,7 @@ export const personal = {
   focus: 'Machine Learning',
   experience: '2+ Years',
   profileImage: '/profile.jpg',
-  resume: '/resume.pdf',
+  resume: '/Akshit_jain_CV.pdf',
   email: 'akshitjainonly1@gmail.com',
   phone: '+91 935055XXXX',
   location: 'Phagwara, India',

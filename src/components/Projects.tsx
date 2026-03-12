@@ -13,8 +13,8 @@ const headReveal = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 const headItem = {
-  hidden: { opacity: 0, y: 36 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 export default function Projects() {
@@ -89,8 +89,13 @@ export default function Projects() {
                 key={project.id}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="project-card group rounded-2xl overflow-hidden border border-zinc-200 bg-white"
+                whileHover={{ y: -10 }}
+                transition={{ 
+                  delay: i * 0.05, 
+                  duration: 0.6, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className="project-card group rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
               >
                 {/* Project Image + Hover Overlay */}
                 <div className="project-img-wrap aspect-[16/10] bg-zinc-100 relative">
@@ -98,7 +103,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-[0.16, 1, 0.3, 1] group-hover:scale-105"
                   />
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4 z-10">

@@ -5,7 +5,7 @@ A premium, highly interactive developer portfolio built with **Next.js 14**, **F
 ![Portfolio Preview](/public/projects/portfolio.png)
 
 ## 🚀 Live Demo
-Experience the live site at: **[aj.vercel.app](https://github.com/akshitjain1/AJ)** (or your Vercel URL)
+Experience the live site at: **[akshitjain.vercel.app](https://akshitjain.vercel.app)** (or your Vercel URL)
 
 ## ✨ Key Features
 

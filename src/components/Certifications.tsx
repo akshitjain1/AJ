@@ -35,8 +35,8 @@ export default function Certifications() {
     visible: { transition: { staggerChildren: 0.1 } },
   };
   const headItem = {
-    hidden: { opacity: 0, y: 36 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const } },
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
@@ -78,10 +78,10 @@ export default function Certifications() {
                 exit={{ opacity: 0, y: -16, scale: 0.97 }}
                 whileHover={{ y: -7, scale: 1.015 }}
                 transition={{ duration: 0.45, delay: (i % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="cert-card group relative border border-zinc-200 rounded-2xl bg-white overflow-hidden
-                           shadow-[0_2px_16px_-4px_rgba(0,0,0,0.08)]
-                           hover:shadow-[0_22px_55px_-14px_rgba(0,0,0,0.18)]
-                           hover:border-zinc-300 cursor-pointer flex flex-col h-full"
+                className="cert-card group relative border border-zinc-300 rounded-2xl bg-white overflow-hidden
+                           shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)]
+                           hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.22)]
+                           hover:border-zinc-400 cursor-pointer flex flex-col h-full"
               >
                 {/* Category colour stripe */}
                 <div
