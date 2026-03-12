@@ -71,13 +71,16 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }}
             className="flex items-center group cursor-pointer"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-zinc-900 border-2 border-white shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
-              <Image 
-                src="/favicon.png" 
-                alt="AJ Logo" 
-                fill 
-                className="object-cover"
-              />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-zinc-900 border-2 border-white shadow-sm group-hover:scale-110 transition-transform overflow-hidden relative">
+                <Image 
+                  src="/favicon.png" 
+                  alt="AJ Logo" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              <span className="font-display font-black text-zinc-900 text-lg tracking-tighter group-hover:text-indigo-600 transition-colors">AJ</span>
             </div>
           </a>
 

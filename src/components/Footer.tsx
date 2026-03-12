@@ -35,7 +35,10 @@ export default function Footer() {
                   className="object-cover"
                 />
               </div>
-              <span className="font-display font-bold text-xl tracking-tight">Akshit Jain</span>
+              <div className="flex flex-col gap-0">
+                <span className="font-display font-black text-white text-xl leading-none">AJ</span>
+                <span className="font-display font-bold text-zinc-500 text-xs tracking-widest uppercase">Akshit Jain</span>
+              </div>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
               ML Engineer & Developer building intelligent solutions. Always learning, always growing.
