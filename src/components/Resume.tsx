@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Mail, ArrowUpRight, Play, Pause } from 'lucide-react';
 import { personal } from '@/data/portfolio';
 import { useState } from 'react';
@@ -129,7 +129,7 @@ export default function Resume() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
                 <p className="text-sm font-semibold text-emerald-800">
-                  {personal.availability}
+                  Available for opportunities
                 </p>
               </div>
             </div>
@@ -151,11 +151,11 @@ export default function Resume() {
               <h3 className="font-display font-bold uppercase text-xl tracking-tight text-zinc-900">
                 Video Resume
               </h3>
-              <p className="text-xs text-zinc-400 mt-0.5">A short personal introduction</p>
+              <p className="text-xs text-zinc-400 mt-0.5">A personal introduction & story</p>
             </div>
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href="/video_cv.mp4"
+              download
               className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 text-zinc-600 px-4 py-2 rounded-xl hover:bg-zinc-50 hover:-translate-y-0.5 transition-all duration-200"
             >
               <Download size={14} /> Download Video
@@ -163,63 +163,108 @@ export default function Resume() {
           </div>
 
           {/* Video Player Area */}
-          <div className="relative aspect-video bg-zinc-950 overflow-hidden">
+          <div className="relative aspect-video bg-zinc-950 overflow-hidden group">
+            {/* The Video Element */}
+            <video
+              id="video-cv-player"
+              className="w-full h-full object-contain"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onClick={() => {
+                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
+                if (v.paused) v.play(); else v.pause();
+              }}
+              onTimeUpdate={(e) => {
+                const v = e.target as HTMLVideoElement;
+                const progress = (v.currentTime / v.duration) * 100;
+                const progressBar = document.getElementById('video-progress-bar');
+                if (progressBar) progressBar.style.width = `${progress}%`;
+                
+                const timeDisplay = document.getElementById('video-time-display');
+                if (timeDisplay) {
+                  const formatTime = (t: number) => {
+                    const m = Math.floor(t / 60);
+                    const s = Math.floor(t % 60);
+                    return `${m}:${s.toString().padStart(2, '0')}`;
+                  };
+                  timeDisplay.innerText = `${formatTime(v.currentTime)} / ${formatTime(v.duration || 0)}`;
+                }
+              }}
+            >
+              <source src="/video_cv.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
             {/* Subtle grid overlay */}
-            <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+            <div className={`absolute inset-0 grid-bg opacity-10 pointer-events-none transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-10'}`} />
 
-            {/* Placeholder content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-              {/* Pulsing ring behind button */}
-              <div className="relative">
-                <span className="absolute inset-0 rounded-full bg-indigo-500/20 animate-ping" />
-                <button
-                  aria-label="Play video"
-                  onClick={() => setIsPlaying((p) => !p)}
-                  className="relative w-20 h-20 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 backdrop-blur-sm"
+            {/* Play Button Overlay (fades out when playing) */}
+            <AnimatePresence>
+              {!isPlaying && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-zinc-900/20 backdrop-blur-[2px]"
                 >
-                  {isPlaying ? (
-                    <Pause size={28} className="text-white" />
-                  ) : (
-                    <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 ml-1">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-
-              <div className="text-center">
-                <p className="text-white/90 font-semibold text-lg tracking-tight">
-                  Video Resume Coming Soon
-                </p>
-                <p className="text-white/40 text-sm mt-1">
-                  Stay tuned for a personal video introduction
-                </p>
-              </div>
-            </div>
+                  <div className="relative">
+                    <span className="absolute inset-0 rounded-full bg-indigo-500/20 animate-ping" />
+                    <button
+                      aria-label="Play video"
+                      onClick={() => {
+                        const v = document.getElementById('video-cv-player') as HTMLVideoElement;
+                        v.play();
+                      }}
+                      className="relative w-24 h-24 bg-white text-zinc-900 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-2xl"
+                    >
+                      <Play size={32} fill="currentColor" className="ml-1" />
+                    </button>
+                  </div>
+                  <motion.div
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="text-center"
+                  >
+                    <p className="text-white font-bold text-xl tracking-tight uppercase">Watch My Journey</p>
+                    <p className="text-white/60 text-xs mt-1 uppercase tracking-widest font-medium">Click to Play</p>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Player Controls Bar */}
-          <div className="bg-zinc-900 px-6 py-3 flex items-center gap-4">
+          <div className="bg-zinc-900 px-6 py-4 flex items-center gap-4">
             <button
               aria-label={isPlaying ? 'Pause' : 'Play'}
-              onClick={() => setIsPlaying((p) => !p)}
-              className="w-8 h-8 bg-zinc-700 hover:bg-zinc-600 rounded-full flex items-center justify-center transition-colors shrink-0"
+              onClick={() => {
+                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
+                if (v.paused) v.play(); else v.pause();
+              }}
+              className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full flex items-center justify-center transition-colors shrink-0"
             >
               {isPlaying ? (
-                <Pause size={14} className="text-white" />
+                <Pause size={16} fill="currentColor" />
               ) : (
-                <svg viewBox="0 0 24 24" fill="white" className="w-3.5 h-3.5 ml-0.5">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                <Play size={16} fill="currentColor" className="ml-0.5" />
               )}
             </button>
 
             {/* Progress track */}
-            <div className="flex-1 h-1 bg-zinc-700 rounded-full overflow-hidden">
-              <div className="h-full w-0 bg-indigo-400 rounded-full transition-all" />
+            <div 
+              className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden cursor-pointer relative"
+              onClick={(e) => {
+                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const p = x / rect.width;
+                v.currentTime = p * v.duration;
+              }}
+            >
+              <div id="video-progress-bar" className="h-full w-0 bg-indigo-500 rounded-full transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
             </div>
 
-            <span className="text-zinc-500 text-xs font-medium tabular-nums shrink-0">
+            <span id="video-time-display" className="text-zinc-500 text-xs font-bold tracking-widest tabular-nums shrink-0 uppercase">
               0:00 / 0:00
             </span>
           </div>

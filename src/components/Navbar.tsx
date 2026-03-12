@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { personal } from '@/data/portfolio';
 
 const navLinks = [
@@ -20,30 +20,32 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [showFullNav, setShowFullNav] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const { scrollY } = useScroll();
+  
+  // Use a ref for lastScrollY and lastDirection to avoid unnecessary re-renders
+  const lastScrollY = useRef(0);
+  const hideTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Determine if we've scrolled past the threshold
-      setScrolled(currentScrollY > 48);
+    return scrollY.on('change', (current) => {
+      // Small threshold for initial scrolling
+      setScrolled(current > 20);
 
-      // Determine scroll direction
-      if (currentScrollY > lastScrollY && currentScrollY > 150) {
-        // Scrolling down
-        setShowFullNav(false);
-      } else {
-        // Scrolling up
-        setShowFullNav(true);
+      const diff = current - lastScrollY.current;
+      
+      // Only trigger if we've scrolled a bit to prevent jitter (buffer of 10px)
+      if (Math.abs(diff) > 10) {
+        if (current > lastScrollY.current && current > 200) {
+          // Scrolling down + past header: Collapse
+          if (showFullNav) setShowFullNav(false);
+        } else if (current < lastScrollY.current || current < 50) {
+          // Scrolling up or at top: Expand
+          if (!showFullNav) setShowFullNav(true);
+        }
+        lastScrollY.current = current;
       }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+    });
+  }, [scrollY, showFullNav]);
 
   // Active section tracker via IntersectionObserver
   useEffect(() => {
@@ -82,12 +84,12 @@ export default function Navbar() {
             opacity: 1,
           }}
           transition={{ 
-            duration: 0.6, 
+            duration: 0.5, 
             ease: [0.16, 1, 0.3, 1],
-            layout: { duration: 0.4, ease: "easeOut" }
+            layout: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
           }}
           className={`pointer-events-auto flex items-center transition-all duration-500 will-change-transform rounded-full border border-zinc-200/80 shadow-xl ${
-            showFullNav ? 'px-2 py-2 py-2 gap-2 sm:gap-4' : 'px-1 py-1 gap-1'
+            showFullNav ? 'px-2 py-2 gap-2 sm:gap-4' : 'px-1 py-1 gap-1'
           } ${
             scrolled ? 'navbar-blur bg-white/80' : 'bg-white/60 backdrop-blur-md'
           }`}
@@ -265,7 +267,7 @@ export default function Navbar() {
               <div className="pt-3 border-t border-zinc-100 flex gap-3">
                 <span className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-full border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                  Available for work
+                  Available for opportunities
                 </span>
                 <a
                   href="#contact"
