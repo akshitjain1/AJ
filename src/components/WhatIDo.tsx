@@ -41,7 +41,7 @@ export default function WhatIDo() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">02 — What I do</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               WHAT I CAN
               <br />
               DO FOR YOU

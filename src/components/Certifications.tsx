@@ -52,7 +52,7 @@ export default function Certifications() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">09 — Credentials</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               CERTIFI-
               <br />
               CATIONS
@@ -66,59 +66,54 @@ export default function Certifications() {
         {/* Certs grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence>
             {visibleCerts.map((cert, i) => (
               <motion.div
                 key={cert.id}
                 layout
-                initial={{ opacity: 0, y: 22 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16, scale: 0.97 }}
-                whileHover={{ y: -7, scale: 1.015 }}
-                transition={{ duration: 0.45, delay: (i % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="cert-card group relative border border-zinc-300 rounded-2xl bg-white overflow-hidden
-                           shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)]
-                           hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.22)]
-                           hover:border-zinc-400 cursor-pointer flex flex-col h-full"
+                exit={{ opacity: 0, scale: 0.95 }}
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.5, delay: (i % 6) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative rounded-[2.5rem] bg-white border border-zinc-100 p-8 shadow-xl shadow-zinc-200/40 hover:shadow-2xl hover:bg-slate-50 transition-all duration-500 flex flex-col h-full overflow-hidden"
               >
-                {/* Category colour stripe */}
-                <div
-                  className={`h-[3px] w-full shrink-0 ${categoryStripe[cert.category] || 'bg-zinc-300'}`}
-                />
-
-                <div className="p-6 flex flex-col h-full">
-                  {/* Icon row */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-11 h-11 rounded-xl bg-zinc-900 flex items-center justify-center
-                                    transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
-                      <Award size={18} className="text-white" />
-                    </div>
-                    <span
-                      className={`text-[10px] font-semibold tracking-wide px-2.5 py-1 rounded-full border
-                                  ${categoryColors[cert.category] || 'bg-zinc-50 text-zinc-600 border-zinc-200'}`}
-                    >
-                      {cert.category}
-                    </span>
+                {/* Visual Decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                {/* Header: Icon + Category */}
+                <div className="flex items-center justify-between mb-8 relative z-10">
+                  <div className="w-14 h-14 rounded-[1.25rem] bg-zinc-900 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <Award size={24} className="text-white" />
                   </div>
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border shadow-sm
+                                ${categoryColors[cert.category]?.replace('bg-', 'bg-white ') || 'bg-white text-zinc-600 border-zinc-200'}`}
+                  >
+                    {cert.category}
+                  </span>
+                </div>
 
-                  {/* Title */}
-                  <h3 className="font-semibold text-zinc-900 text-[15px] leading-snug mb-auto flex-1
-                                 group-hover:text-zinc-700 transition-colors duration-200">
-                    {cert.title}
-                  </h3>
+                {/* Title */}
+                <h3 className="relative z-10 font-display font-bold text-xl leading-tight text-zinc-900 mb-6 group-hover:text-indigo-600 transition-colors duration-300 flex-1">
+                  {cert.title}
+                </h3>
 
-                  {/* Divider + meta */}
-                  <div className="pt-4 mt-4 border-t border-zinc-100 flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                      <Building2 size={11} className="text-zinc-400 shrink-0" />
-                      <span className="text-xs font-medium text-zinc-600 truncate">{cert.issuer}</span>
+                {/* Footer: Meta Info */}
+                <div className="relative z-10 mt-auto pt-6 border-t border-zinc-100 flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-zinc-100 flex items-center justify-center group-hover:bg-indigo-100 transition-colors">
+                      <Building2 size={12} className="text-zinc-500 group-hover:text-indigo-600" />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar size={11} className="text-zinc-400 shrink-0" />
-                      <span className="text-xs text-zinc-400">{cert.date}</span>
+                    <span className="text-[13px] font-bold text-zinc-700">{cert.issuer}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-zinc-50 flex items-center justify-center">
+                      <Calendar size={12} className="text-zinc-400" />
                     </div>
+                    <span className="text-[11px] font-medium text-zinc-400 uppercase tracking-wider">{cert.date}</span>
                   </div>
                 </div>
               </motion.div>

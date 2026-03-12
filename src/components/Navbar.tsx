@@ -113,15 +113,15 @@ export default function Navbar() {
               </motion.div>
               <AnimatePresence mode="wait">
                 {showFullNav && (
-                  <motion.span 
-                    layout
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    exit={{ opacity: 0, width: 0 }}
-                    className="font-display font-black text-zinc-900 text-base tracking-tighter group-hover:text-indigo-600 transition-colors hidden sm:block whitespace-nowrap overflow-hidden"
-                  >
-                    AJ
-                  </motion.span>
+                    <motion.span 
+                      layout
+                      initial={{ opacity: 0, width: 0 }}
+                      animate={{ opacity: 1, width: "auto" }}
+                      exit={{ opacity: 0, width: 0 }}
+                      className="font-display font-extrabold text-zinc-900 text-base tracking-tighter group-hover:text-indigo-600 transition-colors hidden sm:block whitespace-nowrap overflow-hidden"
+                    >
+                      AJ
+                    </motion.span>
                 )}
               </AnimatePresence>
             </div>

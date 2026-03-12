@@ -90,7 +90,7 @@ export default function CodingProfiles() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">08 — Coding</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               CODE
               <br />
               PROFILES
@@ -106,27 +106,28 @@ export default function CodingProfiles() {
           {platforms.map((platform, i) => {
             const isHovered = hoveredId === platform.id;
             return (
-            <motion.a
-              key={platform.id}
-              href={platform.url}
-              target="_blank"
-              rel="noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
-              onHoverStart={() => setHoveredId(platform.id)}
-              onHoverEnd={() => setHoveredId(null)}
-              className="profile-card group border border-zinc-200 rounded-2xl bg-white p-8
-                         transition-all duration-300 flex flex-col h-full cursor-pointer"
-              style={{
-                borderColor: isHovered ? platform.color : 'rgb(228 228 231)',
-                boxShadow: isHovered
-                  ? `0 25px 60px -15px ${platform.color}25`
-                  : '0 4px 20px -4px rgba(0,0,0,0.05)',
-                transform: isHovered ? 'translateY(-10px) scale(1.02)' : '',
-              }}
-            >
+              <motion.a
+                key={platform.id}
+                href={platform.url}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                onHoverStart={() => setHoveredId(platform.id)}
+                onHoverEnd={() => setHoveredId(null)}
+                className="group relative border border-zinc-100 rounded-[2.5rem] bg-white p-10
+                           transition-all duration-500 flex flex-col h-full cursor-pointer shadow-xl shadow-zinc-200/50 hover:shadow-2xl overflow-hidden"
+                style={{
+                  transform: isHovered ? 'translateY(-12px)' : '',
+                }}
+              >
+                {/* Background Glow */}
+                <div 
+                  className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 -mr-16 -mt-16"
+                  style={{ backgroundColor: platform.color }}
+                />
               {/* Logo + name */}
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -155,12 +156,12 @@ export default function CodingProfiles() {
               <div className="divider mb-5" />
 
               {/* Stats */}
-              <div className="flex flex-col gap-3 mt-auto">
+              <div className="flex flex-col gap-4 mt-auto relative z-10">
                 {platform.stats.map((stat) => (
-                  <div key={stat.label} className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-zinc-400">{stat.label}</span>
+                  <div key={stat.label} className="flex items-center justify-between group/stat">
+                    <span className="text-[11px] uppercase tracking-widest font-bold text-zinc-400 group-hover/stat:text-zinc-600 transition-colors">{stat.label}</span>
                     <span
-                      className="text-sm font-semibold text-zinc-900 transition-colors duration-200"
+                      className="text-sm font-bold text-zinc-900"
                       style={{ color: isHovered ? platform.color : '' }}
                     >
                       {stat.value}
@@ -173,33 +174,36 @@ export default function CodingProfiles() {
           })}
         </div>
 
-        {/* GitHub Stats Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+         <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-8 border border-zinc-200 rounded-2xl bg-white p-7 md:p-10"
+          className="mt-12 border border-zinc-100 rounded-[3rem] bg-zinc-900 p-8 md:p-14 shadow-2xl overflow-hidden relative"
         >
-          <h3 className="font-display font-bold uppercase text-xl tracking-tight text-zinc-900 mb-6">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] -mr-64 -mt-64" />
+          
+          <h3 className="relative z-10 font-display font-bold uppercase text-2xl md:text-3xl tracking-tighter text-white mb-10">
             GitHub Activity
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-6">
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {[
               { label: 'Total Repos', value: '20+' },
               { label: 'Contributions', value: '350+' },
-              { label: 'Stars', value: '2' },
-              { label: 'Top Language', value: 'Python' },
+              { label: 'Stars Generated', value: '2' },
+              { label: 'Primary Language', value: 'Python' },
             ].map(({ label, value }) => (
-              <div key={label} className="text-center border border-zinc-100 rounded-xl p-4 bg-zinc-50">
-                <p className="stat-number text-2xl md:text-3xl text-zinc-900">{value}</p>
-                <p className="text-xs text-zinc-400 mt-1">{label}</p>
+              <div key={label} className="flex flex-col gap-2 p-6 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+                <p className="text-3xl md:text-4xl font-display font-bold text-white group-hover:scale-105 group-hover:text-indigo-400 transition-all duration-500">{value}</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">{label}</p>
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="relative z-10 flex flex-wrap gap-2">
             {codingProfiles.github.topLanguages.map((lang) => (
-              <span key={lang} className="tech-tag">{lang}</span>
+              <span key={lang} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[11px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all cursor-crosshair">
+                {lang}
+              </span>
             ))}
           </div>
         </motion.div>

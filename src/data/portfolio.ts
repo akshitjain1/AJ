@@ -13,7 +13,7 @@ export const personal = {
   shortBio: 'Software Engineer building scalable web applications and intelligent systems. Passionate about writing clean, efficient code and transforming ideas into robust products.',
   education: '3rd Year BTech @ LPU',
   focus: 'Machine Learning',
-  experience: '2+ Years',
+  languages: '5+ Languages',
   profileImage: '/profile.jpg',
   resume: '/Akshit_jain_CV.pdf',
   email: 'akshitjainonly1@gmail.com',
@@ -29,7 +29,7 @@ export const personal = {
     gfg: 'https://www.geeksforgeeks.org/user/akshitjain__1/',
   },
   stats: [
-    { label: 'Years of Experience', value: '2+' },
+    { label: 'Languages Mastered', value: '5+' },
     { label: 'Projects Built', value: '11+' },
     { label: 'Certifications', value: '17+' },
     { label: 'LeetCode Solved', value: '100+' },

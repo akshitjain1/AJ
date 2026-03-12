@@ -59,7 +59,7 @@ export default function LoadingScreen() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-center mb-10"
             >
-              <h2 className="font-display font-black uppercase text-2xl tracking-widest text-zinc-900">
+              <h2 className="font-display font-extrabold uppercase text-2xl tracking-widest text-zinc-900">
                 Akshit Jain
               </h2>
               <p className="section-label mt-1 text-[10px]">Initializing Experience</p>

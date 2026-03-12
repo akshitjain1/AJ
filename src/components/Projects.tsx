@@ -45,7 +45,7 @@ export default function Projects() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">04 — Portfolio</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY
               <br />
               PROJECTS
@@ -89,65 +89,74 @@ export default function Projects() {
                 key={project.id}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -12 }}
                 transition={{ 
                   delay: i * 0.05, 
-                  duration: 0.6, 
+                  duration: 0.7, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="project-card group rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
+                className="group relative rounded-[2.5rem] overflow-hidden border border-zinc-100 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500"
               >
                 {/* Project Image + Hover Overlay */}
-                <div className="project-img-wrap aspect-[16/10] bg-zinc-100 relative">
+                <div className="aspect-[16/10] bg-zinc-900 relative overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-700 ease-[0.16, 1, 0.3, 1] group-hover:scale-105"
+                    className="object-cover transition-transform duration-1000 ease-[0.16, 1, 0.3, 1] group-hover:scale-110 opacity-90 group-hover:opacity-100"
                   />
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-white/95 backdrop-blur-md text-zinc-800 text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 rounded-full border border-zinc-200 shadow-sm">
+                  <div className="absolute top-6 left-6 z-10">
+                    <span className="bg-white/95 backdrop-blur-md text-zinc-900 text-[10px] uppercase tracking-[0.2em] font-bold px-4 py-2 rounded-full border border-zinc-100 shadow-xl">
                       {project.category}
                     </span>
                   </div>
-                  {/* Hover Overlay with Buttons */}
-                  <div className="project-overlay rounded-none flex items-center justify-center gap-4">
+                  
+                  {/* Gradient Overlay for better contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Hover Actions */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 scale-90 group-hover:scale-100">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="project-overlay-btn inline-flex items-center gap-2 font-medium bg-white text-zinc-900 px-5 py-2.5 rounded-full hover:bg-zinc-100 transition-colors shadow-lg"
+                      className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-zinc-900 hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-2xl"
+                      title="View Code"
                     >
-                      <Github size={16} /> Code
+                      <Github size={20} />
                     </a>
                     {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noreferrer"
-                        className="project-overlay-btn inline-flex items-center gap-2 font-medium bg-zinc-900 text-white px-5 py-2.5 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors shadow-lg"
+                        className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900 text-white hover:bg-indigo-500 transition-all duration-300 shadow-2xl border border-zinc-800"
+                        title="Live Demo"
                       >
-                        <ExternalLink size={16} /> Demo
+                        <ExternalLink size={20} />
                       </a>
                     )}
                   </div>
                 </div>
 
-                {/* Card Content - Clean & Minimal */}
-                <div className="p-6 md:p-8">
-                  <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tight text-zinc-900 mb-2 leading-tight group-hover:text-indigo-600 transition-colors">
-                    {project.title}
-                  </h3>
+                {/* Card Content */}
+                <div className="p-8 md:p-10">
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  </div>
                   
-                  <p className="text-zinc-500 text-base leading-relaxed mb-6 font-light">
+                  <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-8 font-medium line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Technology Stack Tags */}
-                  <div className="flex flex-wrap gap-2 pt-6 border-t border-zinc-100 mt-auto">
+                  <div className="flex flex-wrap gap-2 pt-8 border-t border-zinc-100">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-xs font-medium bg-zinc-50 text-zinc-600 border border-zinc-200 px-3 py-1.5 rounded-md">
+                      <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-600 transition-colors px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100">
                         {tag}
                       </span>
                     ))}

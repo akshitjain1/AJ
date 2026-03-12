@@ -241,7 +241,7 @@ export default function Hero() {
                 variants={heroTextAnim}
                 initial="hidden"
                 animate="visible"
-                className="font-display font-black text-[22vw] sm:text-[20vw] lg:text-[14vw] xl:text-[220px] leading-[0.8] tracking-[-0.05em] text-zinc-900 select-none z-10 text-center lg:text-right"
+                className="font-display font-extrabold text-[22vw] sm:text-[20vw] lg:text-[14vw] xl:text-[220px] leading-[0.8] tracking-[-0.05em] text-zinc-900 select-none z-10 text-center lg:text-right"
               >
                 {personal.firstName.toUpperCase()}
               </motion.h1>
@@ -326,7 +326,7 @@ export default function Hero() {
                   variants={heroTextAnim}
                   initial="hidden"
                   animate="visible"
-                  className="font-display font-black text-[22vw] sm:text-[20vw] lg:text-[14vw] xl:text-[220px] leading-[0.8] tracking-[-0.05em] text-zinc-900 select-none text-center lg:text-left w-full"
+                  className="font-display font-extrabold text-[22vw] sm:text-[20vw] lg:text-[14vw] xl:text-[220px] leading-[0.8] tracking-[-0.05em] text-zinc-900 select-none text-center lg:text-left w-full"
                 >
                   {personal.lastName.toUpperCase()}
                 </motion.h1>

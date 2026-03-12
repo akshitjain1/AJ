@@ -55,7 +55,7 @@ export default function Resume() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">06 — Experience</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY <br /> RESUME
             </motion.h2>
           </div>
@@ -72,8 +72,8 @@ export default function Resume() {
           className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-16"
         >
           {/* Left: Resume Preview Embedded Viewer */}
-          <motion.div variants={fadeUpVariants} className="w-full h-full min-h-[600px] bg-white rounded-3xl border border-zinc-200 shadow-sm overflow-hidden p-2 lg:p-4">
-            <div className="w-full h-full bg-zinc-100 rounded-2xl overflow-hidden relative">
+          <motion.div variants={fadeUpVariants} className="w-full h-full min-h-[600px] bg-white rounded-[2.5rem] border border-zinc-100 shadow-xl shadow-zinc-200/50 overflow-hidden p-3 md:p-5 transition-transform duration-500 hover:scale-[1.01]">
+            <div className="w-full h-full bg-zinc-100 rounded-[2rem] overflow-hidden relative">
               <iframe
                 src={personal.resume}
                 title="Resume Preview"
@@ -83,12 +83,12 @@ export default function Resume() {
           </motion.div>
 
           {/* Right: Actions Container */}
-          <motion.div variants={fadeUpVariants} className="flex flex-col gap-5">
-            <div className="border border-zinc-200 rounded-2xl p-8 bg-white shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="font-display font-bold uppercase text-2xl tracking-tight text-zinc-900 mb-2">
+          <motion.div variants={fadeUpVariants} className="flex flex-col gap-6">
+            <div className="border border-zinc-100 rounded-[2.5rem] p-10 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+              <h3 className="font-display font-extrabold uppercase text-3xl tracking-tighter text-zinc-900 mb-4">
                 Let&apos;s Work Together
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-8">
+              <p className="text-zinc-500 text-sm leading-relaxed mb-10 font-medium">
                 I&apos;m currently available for full-time opportunities and freelance projects. Let&apos;s discuss how I can bring value to your team.
               </p>
 
@@ -98,7 +98,7 @@ export default function Resume() {
                   download
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-indigo-500 text-white font-semibold text-[15px] px-6 py-4 rounded-xl hover:bg-indigo-600 transition-colors shadow-lg shadow-indigo-500/30"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 hover:scale-105 active:scale-95"
                 >
                   <Download size={18} /> Download Resume
                 </a>
@@ -106,7 +106,7 @@ export default function Resume() {
                 <a
                   href="#contact"
                   onClick={handleSmooth('#contact')}
-                  className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-semibold text-[15px] px-6 py-4 rounded-xl bg-zinc-50 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-colors duration-300"
+                  className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-bold text-sm px-8 py-4 rounded-full bg-white hover:bg-zinc-50 transition-all duration-300"
                 >
                   <Mail size={18} /> Contact Me
                 </a>
@@ -122,13 +122,13 @@ export default function Resume() {
             </div>
 
             {/* Availability Indicator */}
-            <div className="border border-emerald-200 rounded-2xl p-6 bg-emerald-50">
-              <div className="flex items-center gap-3">
+            <div className="border border-emerald-100 rounded-[2rem] p-8 bg-emerald-50/50 shadow-sm shadow-emerald-100/50">
+              <div className="flex items-center gap-4">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
-                <p className="text-sm font-semibold text-emerald-800">
+                <p className="text-sm font-bold text-emerald-800 uppercase tracking-widest">
                   Available for opportunities
                 </p>
               </div>
@@ -143,7 +143,7 @@ export default function Resume() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.25, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 border border-zinc-200 rounded-3xl bg-white shadow-sm overflow-hidden"
+          className="mt-12 border border-zinc-100 rounded-[2.5rem] bg-white shadow-xl shadow-zinc-200/50 overflow-hidden"
         >
           {/* Card Header */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-zinc-100">

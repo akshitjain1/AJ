@@ -34,7 +34,7 @@ export default function Timeline() {
         >
           <div>
             <motion.p variants={headItem} className="section-label mb-3">07 — Education</motion.p>
-            <motion.h2 variants={headItem} className="font-display font-black uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
+            <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY
               <br />
               JOURNEY
@@ -81,7 +81,7 @@ export default function Timeline() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex-1 border border-zinc-200 rounded-2xl p-7 md:p-9 bg-white hover:border-zinc-300 hover:shadow-md transition-all z-10 journey-card-interactive"
+                  className="flex-1 border border-zinc-100 rounded-[2.5rem] p-8 md:p-12 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 z-10"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
@@ -144,22 +144,22 @@ export default function Timeline() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-1 border border-dashed border-zinc-300 rounded-2xl p-7 md:p-9 bg-zinc-50 z-10"
+                className="flex-1 border border-dashed border-zinc-300 rounded-[2.5rem] p-8 md:p-12 bg-zinc-50 z-10"
               >
-                <p className="text-xs uppercase tracking-widest text-zinc-400 font-medium mb-3">
+                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-5">
                   What&apos;s Next
                 </p>
-                <h3 className="font-display font-bold uppercase text-xl md:text-2xl text-zinc-700 tracking-tight mb-3">
+                <h3 className="font-display font-extrabold uppercase text-3xl md:text-5xl text-zinc-700 tracking-tighter mb-6 leading-none">
                   ACTIVELY SEEKING OPPORTUNITIES
                 </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">
+                <p className="text-zinc-500 text-sm md:text-md leading-relaxed mb-8 max-w-xl">
                   I&apos;m actively seeking opportunities in machine learning and software development. My goal is
                   to work on projects that make a real impact while continuing to learn and grow as a developer.
                 </p>
                 <a
                   href="#contact"
                   onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="inline-flex items-center gap-2 mt-5 text-sm font-medium bg-zinc-900 text-white px-5 py-2.5 rounded-md hover:bg-zinc-700 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-bold bg-zinc-900 text-white px-8 py-3 rounded-full hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-zinc-200"
                 >
                   Let&apos;s Connect
                 </a>
