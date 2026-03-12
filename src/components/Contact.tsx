@@ -39,8 +39,30 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-zinc-50 border-t border-zinc-200">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+    <section id="contact" className="py-24 md:py-32 bg-zinc-50 border-t border-zinc-200 relative overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{ 
+            x: [0, 50, 0], 
+            y: [0, 30, 0],
+            rotate: [0, 10, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-indigo-50/50 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{ 
+            x: [0, -40, 0], 
+            y: [0, -60, 0],
+            rotate: [0, -15, 0]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] left-[-5%] w-[350px] h-[350px] bg-emerald-50/40 rounded-full blur-[100px]"
+        />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         {/* Header */}
         <motion.div
           variants={headReveal}
@@ -69,12 +91,18 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             onSubmit={handleSubmit}
-            className="bg-white border border-zinc-200 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white/80 backdrop-blur-sm border border-zinc-200 rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-zinc-200/50 hover:shadow-2xl hover:border-indigo-100 transition-all duration-500"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
                 <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
                   Name <span className="text-red-400">*</span>
                 </label>
@@ -85,11 +113,16 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="Your Name"
-                  className="form-input"
+                  className="form-input focus:ring-indigo-500/20 transition-all duration-300"
                 />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                <label className="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-widest">
                   Email <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -99,12 +132,18 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="your@email.com"
-                  className="form-input"
+                  className="form-input focus:ring-indigo-500/20 transition-all duration-300"
                 />
-              </div>
+              </motion.div>
             </div>
 
-            <div className="mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="mb-6"
+            >
               <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
                 Subject
               </label>
@@ -112,7 +151,7 @@ export default function Contact() {
                 name="subject"
                 value={form.subject}
                 onChange={handleChange}
-                className="form-input"
+                className="form-input focus:ring-indigo-500/20 transition-all duration-300"
               >
                 <option value="">Select a topic...</option>
                 <option value="Machine Learning Project">Machine Learning Project</option>
@@ -121,10 +160,16 @@ export default function Contact() {
                 <option value="Internship / Job Opportunity">Internship / Job Opportunity</option>
                 <option value="General Inquiry">General Inquiry</option>
               </select>
-            </div>
+            </motion.div>
 
-            <div className="mb-6">
-              <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="mb-8"
+            >
+              <label className="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-widest">
                 Message <span className="text-red-400">*</span>
               </label>
               <textarea
@@ -132,19 +177,20 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 required
-                rows={6}
+                rows={5}
                 placeholder="Tell me about your project or what you need help with..."
-                className="form-input resize-none"
+                className="form-input resize-none focus:ring-indigo-500/20 transition-all duration-300"
               />
-            </div>
+            </motion.div>
 
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               disabled={status === 'sending' || status === 'sent'}
-              className="w-full flex items-center justify-center gap-2 bg-zinc-900 text-white font-semibold text-sm px-6 py-4 rounded-xl hover:bg-zinc-800 transition-all shadow-md hover:shadow-[0_8px_30px_-8px_rgba(10,10,10,0.4)] focus:ring-4 focus:ring-zinc-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 flex items-center justify-center gap-3 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-2xl hover:bg-indigo-600 transition-all duration-300 shadow-xl shadow-zinc-200 hover:shadow-indigo-200/50 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest overflow-hidden relative group"
             >
+              <span className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               {status === 'idle' && (
                 <>
                   <Send size={14} />
