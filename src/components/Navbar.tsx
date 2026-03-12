@@ -201,7 +201,7 @@ export default function Navbar() {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
                   <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest whitespace-nowrap">
-                    Available for work
+                    Available for opportunities
                   </span>
                 </motion.div>
               )}
