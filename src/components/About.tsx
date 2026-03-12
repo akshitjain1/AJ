@@ -46,7 +46,7 @@ function StatCounter({ value, label }: { value: string; label: string }) {
   return (
     <div
       ref={ref}
-      className={`relative flex flex-col items-center justify-center p-6 rounded-3xl border transition-all duration-500 hover:-translate-y-1.5 group overflow-hidden ${
+      className={`relative flex flex-col items-center justify-center p-4 md:p-5 rounded-3xl border transition-all duration-500 hover:-translate-y-1.5 group overflow-hidden ${
         isHighlighted 
           ? 'bg-zinc-900 border-zinc-800 shadow-xl' 
           : 'bg-white border-zinc-100 shadow-lg shadow-zinc-200/40'
@@ -60,7 +60,7 @@ function StatCounter({ value, label }: { value: string; label: string }) {
       }`}>
         {count}{suffix}
       </p>
-      <p className={`text-[11px] font-bold uppercase tracking-widest transition-colors ${
+      <p className={`text-[10px] font-bold uppercase tracking-widest text-center transition-colors ${
         isHighlighted ? 'text-zinc-400 group-hover:text-indigo-400' : 'text-zinc-500 group-hover:text-zinc-900'
       }`}>
         {label}

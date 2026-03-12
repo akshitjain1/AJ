@@ -78,7 +78,7 @@ export default function Certifications() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ y: -10 }}
                 transition={{ duration: 0.5, delay: (i % 6) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative rounded-[2.5rem] bg-white border border-zinc-100 p-8 shadow-xl shadow-zinc-200/40 hover:shadow-2xl hover:bg-slate-50 transition-all duration-500 flex flex-col h-full overflow-hidden"
+                className="group relative rounded-[2.5rem] bg-zinc-50 border border-zinc-100 p-8 shadow-xl shadow-zinc-200/40 hover:shadow-2xl hover:bg-white transition-all duration-500 flex flex-col h-full overflow-hidden"
               >
                 {/* Visual Decoration */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
