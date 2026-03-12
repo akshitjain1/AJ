@@ -2,7 +2,7 @@
 
 A premium, highly interactive developer portfolio built with **Next.js 14**, **Framer Motion**, and **Tailwind CSS**. This portfolio showcases Machine Learning expertise and Full-Stack development skills with a focus on smooth aesthetics and professional micro-animations.
 
-![Portfolio Preview](/public/projects/ra_kmodes.png)
+![Portfolio Preview](/public/projects/portfolio.png)
 
 ## 🚀 Live Demo
 Experience the live site at: **[aj.vercel.app](https://github.com/akshitjain1/AJ)** (or your Vercel URL)
