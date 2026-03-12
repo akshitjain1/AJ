@@ -152,7 +152,7 @@ export default function About() {
                 href={personal.social.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 px-4 py-2.5 rounded-md hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all"
+                className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 px-5 py-2.5 rounded-full hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all shadow-sm"
               >
                 GitHub Profile <ArrowUpRight size={13} />
               </a>
@@ -160,7 +160,7 @@ export default function About() {
                 href={personal.social.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 px-4 py-2.5 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-all"
+                className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 px-5 py-2.5 rounded-full hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm"
               >
                 LinkedIn <ArrowUpRight size={13} />
               </a>

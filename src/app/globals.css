@@ -434,20 +434,7 @@ iframe[src*="unicorn"],
   clip: rect(0, 0, 0, 0) !important;
 }
 
-/* Platform Hover Colors */
-.hover-linkedin:hover { color: #0A66C2 !important; border-color: #0A66C2 !important; }
-.hover-twitter:hover { color: #000000 !important; border-color: #000000 !important; }
-.hover-instagram:hover { 
-  color: #E1306C !important; 
-  border-color: #E1306C !important;
-  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-.hover-linkedin-bg:hover { 
-  background-color: #0A66C2 !important; 
-  color: white !important;
-}
+/* Platform Hover Colors - Deprecated, using Tailwind group-hover instead */
 
 /* ──────────────────────────────────────────
    NAVBAR BLUR

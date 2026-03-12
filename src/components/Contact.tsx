@@ -103,7 +103,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
+                <label className="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-widest">
                   Name <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -144,7 +144,7 @@ export default function Contact() {
               transition={{ delay: 0.4 }}
               className="mb-6"
             >
-              <label className="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-widest">
                 Subject
               </label>
               <select
@@ -242,25 +242,25 @@ export default function Contact() {
               <div className="flex flex-col gap-4">
                 <a
                   href={`mailto:${personal.email}`}
-                  className="flex items-center gap-3 group"
+                  className="flex items-center gap-4 group p-2 rounded-xl hover:bg-zinc-50 transition-all"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-900 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-900 transition-all duration-300">
                     <Mail size={14} className="text-zinc-500 group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-400">Email</p>
-                    <p className="text-sm font-medium text-zinc-800 hover-underline">{personal.email}</p>
+                    <p className="text-xs text-zinc-400 mb-0.5">Email</p>
+                    <p className="text-sm font-medium text-zinc-800 group-hover:text-indigo-600 transition-colors">{personal.email}</p>
                   </div>
-                  <ArrowUpRight size={14} className="text-zinc-300 group-hover:text-zinc-600 ml-auto transition-colors" />
+                  <ArrowUpRight size={14} className="text-zinc-300 group-hover:text-zinc-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ml-auto transition-all" />
                 </a>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center">
-                    <MapPin size={14} className="text-zinc-500" />
+                <div className="flex items-center gap-4 group p-2 rounded-xl transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-900 transition-all duration-300">
+                    <MapPin size={14} className="text-zinc-500 group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-400">Location</p>
-                    <p className="text-sm font-medium text-zinc-800">{personal.location}</p>
+                    <p className="text-xs text-zinc-400 mb-0.5">Location</p>
+                    <p className="text-sm font-medium text-zinc-800 transition-colors group-hover:text-indigo-600">{personal.location}</p>
                   </div>
                 </div>
               </div>
@@ -273,26 +273,26 @@ export default function Contact() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { icon: Github, label: 'GitHub', href: personal.social.github, handle: '@akshitjain1', hover: 'hover-twitter' },
-                  { icon: Linkedin, label: 'LinkedIn', href: personal.social.linkedin, handle: 'Akshit Jain', hover: 'hover-linkedin' },
-                  { icon: Twitter, label: 'Twitter', href: personal.social.twitter, handle: '@akshitjain', hover: 'hover-twitter' },
-                  { icon: Instagram, label: 'Instagram', href: personal.social.instagram, handle: '@akshitjain__1', hover: 'hover-instagram' },
-                ].map(({ icon: Icon, label, href, handle, hover }) => (
+                  { icon: Github, label: 'GitHub', href: personal.social.github, handle: '@akshitjain1' },
+                  { icon: Linkedin, label: 'LinkedIn', href: personal.social.linkedin, handle: 'Akshit Jain' },
+                  { icon: Twitter, label: 'Twitter', href: personal.social.twitter, handle: '@akshitjain' },
+                  { icon: Instagram, label: 'Instagram', href: personal.social.instagram, handle: '@akshitjain__1' },
+                ].map(({ icon: Icon, label, href, handle }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className={`flex items-center gap-3 group transition-all p-1 rounded-lg ${hover}`}
+                    className="flex items-center gap-4 group transition-all p-2 rounded-xl hover:bg-zinc-50"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-900 transition-colors">
-                      <Icon size={13} className="text-zinc-500 group-hover:text-white transition-colors" />
+                    <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-900 transition-all duration-300">
+                      <Icon size={14} className="text-zinc-500 group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <span className="text-xs text-zinc-400">{label}</span>
-                      <p className="text-sm font-medium text-zinc-700 group-hover:text-inherit">{handle}</p>
+                      <p className="text-xs text-zinc-400 mb-0.5">{label}</p>
+                      <p className="text-sm font-medium text-zinc-800 group-hover:text-indigo-600 transition-colors">{handle}</p>
                     </div>
-                    <ArrowUpRight size={12} className="text-zinc-300 group-hover:text-inherit ml-auto transition-colors" />
+                    <ArrowUpRight size={14} className="text-zinc-300 group-hover:text-zinc-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ml-auto transition-all" />
                   </a>
                 ))}
               </div>

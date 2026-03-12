@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Mail, ArrowUpRight, Play, Pause } from 'lucide-react';
 import { personal } from '@/data/portfolio';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const containerVariants = {
   hidden: {},
@@ -33,7 +33,15 @@ const headItem = {
 };
 
 export default function Resume() {
+  const [mounted, setMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const timeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSmooth = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -165,35 +173,39 @@ export default function Resume() {
           {/* Video Player Area */}
           <div className="relative aspect-video bg-zinc-950 overflow-hidden group">
             {/* The Video Element */}
-            <video
-              id="video-cv-player"
-              className="w-full h-full object-contain"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onClick={() => {
-                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
-                if (v.paused) v.play(); else v.pause();
-              }}
-              onTimeUpdate={(e) => {
-                const v = e.target as HTMLVideoElement;
-                const progress = (v.currentTime / v.duration) * 100;
-                const progressBar = document.getElementById('video-progress-bar');
-                if (progressBar) progressBar.style.width = `${progress}%`;
-                
-                const timeDisplay = document.getElementById('video-time-display');
-                if (timeDisplay) {
-                  const formatTime = (t: number) => {
-                    const m = Math.floor(t / 60);
-                    const s = Math.floor(t % 60);
-                    return `${m}:${s.toString().padStart(2, '0')}`;
-                  };
-                  timeDisplay.innerText = `${formatTime(v.currentTime)} / ${formatTime(v.duration || 0)}`;
-                }
-              }}
-            >
-              <source src="/video_cv.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {mounted && (
+              <video
+                ref={videoRef}
+                className="w-full h-full object-contain"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onClick={() => {
+                  if (videoRef.current) {
+                    if (videoRef.current.paused) videoRef.current.play();
+                    else videoRef.current.pause();
+                  }
+                }}
+                onTimeUpdate={(e) => {
+                  const v = e.target as HTMLVideoElement;
+                  const progress = (v.currentTime / v.duration) * 100;
+                  if (progressRef.current) {
+                    progressRef.current.style.width = `${progress}%`;
+                  }
+                  
+                  if (timeRef.current) {
+                    const formatTime = (t: number) => {
+                      const m = Math.floor(t / 60);
+                      const s = Math.floor(t % 60);
+                      return `${m}:${s.toString().padStart(2, '0')}`;
+                    };
+                    timeRef.current.innerText = `${formatTime(v.currentTime)} / ${formatTime(v.duration || 0)}`;
+                  }
+                }}
+              >
+                <source src="/video_cv.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
 
             {/* Subtle grid overlay */}
             <div className={`absolute inset-0 grid-bg opacity-10 pointer-events-none transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-10'}`} />
@@ -212,8 +224,7 @@ export default function Resume() {
                     <button
                       aria-label="Play video"
                       onClick={() => {
-                        const v = document.getElementById('video-cv-player') as HTMLVideoElement;
-                        v.play();
+                        if (videoRef.current) videoRef.current.play();
                       }}
                       className="relative w-24 h-24 bg-white text-zinc-900 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-2xl"
                     >
@@ -238,8 +249,10 @@ export default function Resume() {
             <button
               aria-label={isPlaying ? 'Pause' : 'Play'}
               onClick={() => {
-                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
-                if (v.paused) v.play(); else v.pause();
+                if (videoRef.current) {
+                  if (videoRef.current.paused) videoRef.current.play();
+                  else videoRef.current.pause();
+                }
               }}
               className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full flex items-center justify-center transition-colors shrink-0"
             >
@@ -254,17 +267,18 @@ export default function Resume() {
             <div 
               className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden cursor-pointer relative"
               onClick={(e) => {
-                const v = document.getElementById('video-cv-player') as HTMLVideoElement;
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const p = x / rect.width;
-                v.currentTime = p * v.duration;
+                if (videoRef.current) {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const p = x / rect.width;
+                  videoRef.current.currentTime = p * videoRef.current.duration;
+                }
               }}
             >
-              <div id="video-progress-bar" className="h-full w-0 bg-indigo-500 rounded-full transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
+              <div ref={progressRef} className="h-full w-0 bg-indigo-500 rounded-full transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
             </div>
 
-            <span id="video-time-display" className="text-zinc-500 text-xs font-bold tracking-widest tabular-nums shrink-0 uppercase">
+            <span ref={timeRef} className="text-zinc-500 text-xs font-bold tracking-widest tabular-nums shrink-0 uppercase">
               0:00 / 0:00
             </span>
           </div>
