@@ -59,9 +59,9 @@ export default function Certifications() {
           <div>
             <motion.p variants={headItem} className="section-label mb-3">08 — Credentials</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
-              CERTIFI-
+              CERTIFICATIONS
               <br />
-              CATIONS
+             
             </motion.h2>
           </div>
           <motion.p variants={headItem} className="max-w-xs text-zinc-500 text-sm leading-relaxed md:text-right">
