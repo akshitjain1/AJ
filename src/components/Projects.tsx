@@ -44,7 +44,7 @@ export default function Projects() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">04 — Portfolio</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">05 — Projects</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY
               <br />
@@ -65,8 +65,8 @@ export default function Projects() {
               onClick={() => setActiveCategory(cat)}
               className={`text-[13px] font-medium px-5 py-2 rounded-full border transition-all ${
                 activeCategory === cat
-                  ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm'
-                  : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:text-zinc-900'
+                   ? 'bg-zinc-900 text-white border-zinc-900 shadow-sm'
+                   : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:text-zinc-900'
               }`}
             >
               {cat}
@@ -95,10 +95,10 @@ export default function Projects() {
                   duration: 0.7, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="group relative rounded-[2.5rem] overflow-hidden border border-zinc-100 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500"
+                className="group relative rounded-[2.5rem] overflow-hidden border border-zinc-100 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 flex flex-col"
               >
                 {/* Project Image + Hover Overlay */}
-                <div className="aspect-[16/10] bg-zinc-900 relative overflow-hidden">
+                <div className="aspect-[16/10] bg-zinc-900 relative overflow-hidden shrink-0">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -116,7 +116,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Hover Actions */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 scale-90 group-hover:scale-100">
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 scale-90 group-hover:scale-100 z-20">
                     <a
                       href={project.github}
                       target="_blank"
@@ -141,27 +141,7 @@ export default function Projects() {
                 </div>
 
                 {/* Card Content */}
-                <div className="p-8 md:p-10">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                  </div>
-                  
-                  <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-8 font-medium line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Technology Stack Tags */}
-                  <div className="flex flex-wrap gap-2 pt-8 border-t border-zinc-100">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-600 transition-colors px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <ProjectCardContent project={project} />
               </motion.div>
             ))}
           </motion.div>
@@ -169,5 +149,43 @@ export default function Projects() {
 
       </div>
     </section>
+  );
+}
+
+function ProjectCardContent({ project }: { project: any }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="p-8 md:p-10 flex flex-col flex-1">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
+          {project.title}
+        </h3>
+        <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+      </div>
+      
+      <div className="relative mb-6 flex-1">
+        <p className={`text-zinc-500 text-sm md:text-base leading-relaxed font-medium transition-all duration-500 ${expanded ? '' : 'line-clamp-3'}`}>
+          {project.description}
+        </p>
+        {project.description.length > 120 && (
+          <button 
+            onClick={() => setExpanded(!expanded)}
+            className="text-xs font-bold uppercase tracking-widest text-indigo-500 mt-3 hover:text-indigo-600 transition-colors flex items-center gap-1.5"
+          >
+            {expanded ? 'Show Less' : 'Read More About Project'}
+          </button>
+        )}
+      </div>
+
+      {/* Technology Stack Tags */}
+      <div className="flex flex-wrap gap-2 pt-8 border-t border-zinc-100 mt-auto">
+        {project.tags.map((tag: string) => (
+          <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-600 transition-colors px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }

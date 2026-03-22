@@ -40,11 +40,11 @@ export default function WhatIDo() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">02 — What I do</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">03 — What I do</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               WHAT I CAN
               <br />
-              DO FOR YOU
+              DO
             </motion.h2>
           </div>
           <motion.p variants={headItem} className="max-w-xs text-zinc-500 text-sm leading-relaxed font-light md:text-right">

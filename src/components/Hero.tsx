@@ -223,7 +223,7 @@ export default function Hero() {
               className="w-full flex justify-between items-end mb-4 lg:mb-8"
             >
                <span className="font-display text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                01 / {personal.firstName} {personal.lastName}
+                01 / INTRO
               </span>
               <span className="hidden md:block font-display text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-zinc-500">
                 {personal.title || "ML ENGINEER"}

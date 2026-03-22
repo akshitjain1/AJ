@@ -89,7 +89,7 @@ export default function CodingProfiles() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">08 — Coding</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">09 — Coding</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               CODE
               <br />

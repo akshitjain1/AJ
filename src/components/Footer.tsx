@@ -36,8 +36,8 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col gap-0">
-                <span className="font-display font-extrabold text-white text-xl leading-none">AJ</span>
-                <span className="font-display font-bold text-zinc-500 text-xs tracking-widest uppercase">Akshit Jain</span>
+                <span className="font-display font-extrabold text-white text-xl leading-none uppercase tracking-tighter">Portfolio</span>
+                <span className="font-display font-bold text-zinc-500 text-[10px] tracking-widest uppercase">Akshit Jain</span>
               </div>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">

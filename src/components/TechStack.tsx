@@ -26,7 +26,7 @@ export default function TechStack() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">05 — Skills</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">04 — Skills</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY TECH
               <br />
@@ -57,12 +57,18 @@ export default function TechStack() {
                 {cat.category}
               </h3>
               <div className="flex flex-col gap-6">
-                {cat.skills.map((skill, si) => (
+                {cat.skills.map((skill: any, si) => (
                   <div key={skill.name} className="relative z-10 flex items-center justify-between py-1 group/skill">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-400 group-hover/skill:bg-indigo-500 group-hover/skill:text-white transition-all duration-300 group-hover:scale-110">
+                      <a 
+                        href={skill.docUrl} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        title={`View ${skill.name} documentation`}
+                        className="w-8 h-8 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-400 group-hover/skill:bg-indigo-500 group-hover/skill:text-white transition-all duration-300 group-hover:scale-110 cursor-alias"
+                      >
                         <Terminal size={12} />
-                      </div>
+                      </a>
                       <span className="text-sm font-bold text-zinc-600 group-hover:text-zinc-900 group-hover/skill:text-indigo-600 transition-colors uppercase tracking-tight">
                         {skill.name}
                       </span>

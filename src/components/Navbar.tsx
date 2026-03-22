@@ -20,7 +20,11 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [showFullNav, setShowFullNav] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const { scrollY } = useScroll();
+
+  // Combine conditions for visibility
+  const isExpanded = showFullNav || isHovered;
   
   // Use a ref for lastScrollY and lastDirection to avoid unnecessary re-renders
   const lastScrollY = useRef(0);
@@ -88,8 +92,10 @@ export default function Navbar() {
             ease: [0.16, 1, 0.3, 1],
             layout: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
           }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className={`pointer-events-auto flex items-center transition-all duration-500 will-change-transform rounded-full border border-zinc-200/80 shadow-xl ${
-            showFullNav ? 'px-2 py-2 gap-2 sm:gap-4' : 'px-1 py-1 gap-1'
+            isExpanded ? 'px-2 py-2 gap-2 sm:gap-4' : 'px-1 py-1 gap-1'
           } ${
             scrolled ? 'navbar-blur bg-white/80' : 'bg-white/60 backdrop-blur-md'
           }`}
@@ -104,15 +110,15 @@ export default function Navbar() {
             }}
             className="flex items-center group cursor-pointer"
           >
-            <div className={`flex items-center ${showFullNav ? 'gap-2.5 px-1' : 'gap-0'}`}>
+            <div className={`flex items-center ${isExpanded ? 'gap-2.5 px-1' : 'gap-0'}`}>
               <motion.div 
                 layout
-                className={`${showFullNav ? 'w-8 h-8 sm:w-9 sm:h-9' : 'w-8 h-8'} rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-all overflow-hidden relative`}
+                className={`${isExpanded ? 'w-8 h-8 sm:w-9 sm:h-9' : 'w-8 h-8'} rounded-full flex items-center justify-center bg-zinc-900 border border-white/20 shadow-sm group-hover:scale-110 transition-all overflow-hidden relative`}
               >
-                <Image src="/favicon.png" alt="AJ Logo" fill className="object-cover" />
+                <Image src="/favicon.png" alt="Portfolio Logo" fill className="object-cover" />
               </motion.div>
               <AnimatePresence mode="wait">
-                {showFullNav && (
+                {isExpanded && (
                     <motion.span 
                       layout
                       initial={{ opacity: 0, width: 0 }}
@@ -129,7 +135,7 @@ export default function Navbar() {
 
           {/* Desktop Nav - Hidden when scrolling down */}
           <AnimatePresence>
-            {showFullNav && (
+            {isExpanded && (
               <motion.nav 
                 layout
                 initial={{ opacity: 0, scale: 0.9, width: 0 }}
@@ -173,7 +179,7 @@ export default function Navbar() {
           {/* Opportunities / CTA Area */}
           <motion.div layout className="flex items-center">
             <AnimatePresence mode="wait">
-              {showFullNav ? (
+              {isExpanded ? (
                 <motion.a
                   layout
                   key="contact-btn"
@@ -211,7 +217,7 @@ export default function Navbar() {
 
             {/* Hamburger for mobile - only show when full nav is visible */}
             <AnimatePresence>
-              {showFullNav && (
+              {isExpanded && (
                 <motion.button
                   layout
                   initial={{ opacity: 0, width: 0 }}

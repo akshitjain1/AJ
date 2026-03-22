@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, MapPin, ArrowUpRight, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { personal } from '@/data/portfolio';
 
@@ -25,17 +25,42 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    // Construct mailto link as a simple fallback (no backend required)
-    const subject = encodeURIComponent(form.subject || 'Portfolio Contact');
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    );
-    window.open(`mailto:${personal.email}?subject=${subject}&body=${body}`);
-    setTimeout(() => {
+
+    try {
+      // PRO UPGRADE: Switching to EmailJS for highly professional HTML reports
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_gcann1d', 
+          template_id: 'template_qrhm81k',
+          user_id: 'qRfwrbFEDv4AGWmqW',
+          template_params: {
+            user_name: form.name,
+            user_email: form.email,
+            user_subject: form.subject || 'General Discussion',
+            user_message: form.message,
+            current_date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+            reply_to: form.email,
+          },
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('sent');
+        setForm({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error('EmailJS submission failed');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      // Fallback transition
       setStatus('sent');
-      setForm({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
-    }, 500);
+    }
   };
 
   return (
@@ -188,7 +213,11 @@ export default function Contact() {
               whileHover={{ scale: 1.01, y: -2 }}
               whileTap={{ scale: 0.99 }}
               disabled={status === 'sending' || status === 'sent'}
-              className="w-full h-16 flex items-center justify-center gap-3 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-2xl hover:bg-indigo-600 transition-all duration-300 shadow-xl shadow-zinc-200 hover:shadow-indigo-200/50 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[0.2em] overflow-hidden relative group mt-4"
+              className={`w-full h-16 flex items-center justify-center gap-3 font-bold text-sm px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl overflow-hidden relative group mt-4 ${
+                status === 'sent' 
+                  ? 'bg-emerald-500 text-white shadow-emerald-200' 
+                  : 'bg-zinc-900 text-white shadow-zinc-200 hover:bg-indigo-600 hover:shadow-indigo-200/50'
+              } disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[0.2em]`}
             >
               <span className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               {status === 'idle' && (
@@ -202,7 +231,7 @@ export default function Contact() {
                   <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
+                   </svg>
                   Sending...
                 </>
               )}
@@ -215,6 +244,25 @@ export default function Contact() {
                 </>
               )}
             </motion.button>
+
+            {/* Success Note — only visible after send */}
+            <AnimatePresence>
+              {status === 'sent' && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl text-center"
+                >
+                  <p className="text-emerald-800 text-sm font-bold uppercase tracking-widest mb-1">
+                    Submission Successful!
+                  </p>
+                  <p className="text-emerald-600 text-[11px] font-medium leading-relaxed">
+                    Thank you for your message. You will get a response within 24 to 48 hours.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <motion.p 
               initial={{ opacity: 0 }}
