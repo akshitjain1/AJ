@@ -31,7 +31,7 @@ export const personal = {
   stats: [
     { label: 'Languages Mastered', value: '5+' },
     { label: 'Projects Built', value: '12+' },
-    { label: 'Certifications', value: '17+' },
+    { label: 'Certifications', value: '20+' },
     { label: 'LeetCode Solved', value: '100+' },
   ],
   funFacts: [
@@ -359,6 +359,7 @@ export const certifications = [
     date: 'Aug 2025',
     credentialId: '157772739',
     category: 'Computer Science',
+    url: 'https://drive.google.com/file/d/1stfHSTs7bQt53r-96x4WHBgaA7ZzFbhv/view?usp=drive_link',
   },
   {
     id: 2,
@@ -367,6 +368,7 @@ export const certifications = [
     date: 'Jul 2025',
     credentialId: '',
     category: 'Algorithms',
+    url: 'https://drive.google.com/file/d/1iSUcjCia6JiEoi8h4beNjSpXzqenAUMZ/view?usp=drive_link',
   },
   {
     id: 3,
@@ -375,6 +377,7 @@ export const certifications = [
     date: 'May 2025',
     credentialId: '',
     category: 'Programming',
+    url: 'https://drive.google.com/file/d/1xvTkdAgvCH0bVSXJOUakTYLNpI_bHe_2/view?usp=drive_link',
   },
   {
     id: 4,
@@ -383,6 +386,7 @@ export const certifications = [
     date: 'Dec 2024',
     credentialId: '',
     category: 'Algorithms',
+    url: '',
   },
   {
     id: 5,
@@ -391,6 +395,7 @@ export const certifications = [
     date: 'Dec 2024',
     credentialId: '',
     category: 'Programming',
+    url: 'https://drive.google.com/file/d/1DtI9TVIOfqfJf-knEtrepkGljGBcQPDE/view?usp=drive_link',
   },
   {
     id: 6,
@@ -399,6 +404,7 @@ export const certifications = [
     date: 'Nov 2024',
     credentialId: '',
     category: 'Networking',
+    url: 'https://drive.google.com/file/d/1UwlfRV_bit4YmcdBXNbpo31DCyqO6Q6F/view?usp=drive_link',
   },
   {
     id: 7,
@@ -407,6 +413,7 @@ export const certifications = [
     date: 'Sep 2024',
     credentialId: '',
     category: 'Networking',
+    url: 'https://drive.google.com/file/d/1wSiXNhKUZ7aHW967lr01mR7nt3zdQnV-/view?usp=drive_link',
   },
   {
     id: 8,
@@ -415,6 +422,7 @@ export const certifications = [
     date: 'Sep 2024',
     credentialId: '',
     category: 'Systems',
+    url: 'https://drive.google.com/file/d/10uk9TVAoVJAjvdQVbkIw8QRTQCcnySSd/view?usp=drive_link',
   },
   {
     id: 9,
@@ -423,6 +431,7 @@ export const certifications = [
     date: 'Feb 2024',
     credentialId: '',
     category: 'Web Dev',
+    url: 'https://drive.google.com/file/d/1qHhTX-dxkThLuDvlNxl-lX57DFM5c6Sd/view?usp=drive_link',
   },
   {
     id: 10,
@@ -431,6 +440,7 @@ export const certifications = [
     date: 'Nov 2023',
     credentialId: '',
     category: 'Web Dev',
+    url: 'https://drive.google.com/file/d/11mfEFBi9I3MC78CeY9DufrsP6e5UdR5M/view?usp=drive_link',
   },
   {
     id: 11,
@@ -439,6 +449,7 @@ export const certifications = [
     date: 'Sep 2024',
     credentialId: '',
     category: 'Hardware',
+    url: 'https://drive.google.com/file/d/1eAarHr5dMQ7ap_Q-sIA7tJs-YZ6TTHex/view?usp=drive_link',
   },
   {
     id: 12,
@@ -447,6 +458,79 @@ export const certifications = [
     date: 'May 2024',
     credentialId: '',
     category: 'Programming',
+    url: 'https://drive.google.com/file/d/1yyTZTXZpCIeD7bf50iRjvFaK9nnSY5tl/view?usp=drive_link',
+  },
+  {
+    id: 13,
+    title: 'Hackathon Participation IOT',
+    issuer: 'IOT Hackathon',
+    date: 'Feb 2024',
+    credentialId: '',
+    category: 'Hackathon',
+    url: 'https://drive.google.com/file/d/1U1H-nAZDX0-dtPMfXYrrH3Ks9iSsoN9C/view?usp=drive_link',
+  },
+  {
+    id: 14,
+    title: 'Build Generative AI App & Solution (No Code)',
+    issuer: 'Google Cloud',
+    date: 'Mar 2024',
+    credentialId: '',
+    category: 'AI / ML',
+    url: 'https://drive.google.com/file/d/1fzip2-nCI6LybXFaG9RgcamaYqbSJSkZ/view?usp=drive_link',
+  },
+  {
+    id: 15,
+    title: 'Pitching Yourself for Opportunities',
+    issuer: 'LinkedIn',
+    date: '2024',
+    credentialId: '',
+    category: 'Soft Skills',
+    url: 'https://drive.google.com/file/d/13Pr5poOLIQywhZqUjjVM3VDKZI6sSpg0/view?usp=drive_link',
+  },
+  {
+    id: 16,
+    title: 'Management Tips',
+    issuer: 'LinkedIn',
+    date: '2024',
+    credentialId: '',
+    category: 'Soft Skills',
+    url: 'https://drive.google.com/file/d/1lDULRcZ2KXPARZQrBoLRuP7GhMQJOFpA/view?usp=drive_link',
+  },
+  {
+    id: 17,
+    title: 'Chat GPT Made Easy',
+    issuer: 'LinkedIn',
+    date: '2024',
+    credentialId: '',
+    category: 'AI / ML',
+    url: 'https://drive.google.com/file/d/1GxmCjHoaul73ykQQyg2L0AIByTw1Xqyx/view?usp=drive_link',
+  },
+  {
+    id: 18,
+    title: 'Fundamentals of Network',
+    issuer: 'Cisco',
+    date: '2024',
+    credentialId: '',
+    category: 'Networking',
+    url: 'https://drive.google.com/file/d/17pM8seDRW6vtZxZxCOxyuNHieMhZ_pTH/view?usp=drive_link',
+  },
+  {
+    id: 19,
+    title: 'Master Generative AI',
+    issuer: 'LinkedIn',
+    date: '2024',
+    credentialId: '',
+    category: 'AI / ML',
+    url: 'https://drive.google.com/file/d/1ScoW6I0fvvPxwuT9lJfpWf9HyCce_lvI/view?usp=drive_link',
+  },
+  {
+    id: 20,
+    title: 'ChatGPT-4 Prompt Engineering: Generative AI & LLM',
+    issuer: 'Udemy',
+    date: '2024',
+    credentialId: '',
+    category: 'AI / ML',
+    url: 'https://drive.google.com/file/d/1V8wMVhuh4M0DxmGUShy2LB5JyX61JJaw/view?usp=drive_link',
   },
 ];
 

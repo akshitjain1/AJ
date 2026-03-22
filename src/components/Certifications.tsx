@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, Calendar, Building2, ChevronDown } from 'lucide-react';
+import { Award, Calendar, Building2, ChevronDown, ExternalLink } from 'lucide-react';
 import { certifications } from '@/data/portfolio';
 
 const categoryColors: Record<string, string> = {
@@ -13,6 +13,9 @@ const categoryColors: Record<string, string> = {
   'Computer Science': 'bg-zinc-100 text-zinc-700 border-zinc-300',
   'Systems':          'bg-red-50 text-red-700 border-red-200',
   'Hardware':         'bg-amber-50 text-amber-700 border-amber-200',
+  'Hackathon':        'bg-yellow-50 text-yellow-700 border-yellow-200',
+  'AI / ML':          'bg-indigo-50 text-indigo-700 border-indigo-200',
+  'Soft Skills':      'bg-pink-50 text-pink-700 border-pink-200',
 };
 
 // Thin top-stripe accent per category
@@ -24,6 +27,9 @@ const categoryStripe: Record<string, string> = {
   'Computer Science': 'bg-zinc-600',
   'Systems':          'bg-red-500',
   'Hardware':         'bg-amber-500',
+  'Hackathon':        'bg-yellow-500',
+  'AI / ML':          'bg-indigo-500',
+  'Soft Skills':      'bg-pink-500',
 };
 
 export default function Certifications() {
@@ -115,6 +121,19 @@ export default function Certifications() {
                     </div>
                     <span className="text-[11px] font-medium text-zinc-400 uppercase tracking-wider">{cert.date}</span>
                   </div>
+
+                  {cert.url && (
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 flex items-center justify-center gap-2 group/btn relative overflow-hidden bg-zinc-900 text-white rounded-full py-2 px-4 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-zinc-200"
+                    >
+                      <span className="relative z-10 text-[11px] font-bold uppercase tracking-widest">Verify Credential</span>
+                      <ExternalLink size={12} className="relative z-10 opacity-60 group-hover/btn:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-indigo-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
