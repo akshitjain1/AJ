@@ -386,7 +386,7 @@ export const certifications = [
     date: 'Dec 2024',
     credentialId: '',
     category: 'Algorithms',
-    url: '',
+    url: 'https://drive.google.com/file/d/1DtI9TVIOfqfJf-knEtrepkGljGBcQPDE/view?usp=drive_link',
   },
   {
     id: 5,
