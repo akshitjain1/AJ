@@ -355,7 +355,7 @@ export const certifications = [
   {
     id: 1,
     title: 'Computational Theory: Language Principle & Finite Automata',
-    issuer: 'Skillsoft',
+    issuer: 'Infosys',
     date: 'Aug 2025',
     credentialId: '157772739',
     category: 'Computer Science',
@@ -499,8 +499,8 @@ export const certifications = [
   {
     id: 17,
     title: 'Chat GPT Made Easy',
-    issuer: 'LinkedIn',
-    date: '2024',
+    issuer: 'Udemy',
+    date: 'Aug 2025',
     credentialId: '',
     category: 'AI / ML',
     url: 'https://drive.google.com/file/d/1GxmCjHoaul73ykQQyg2L0AIByTw1Xqyx/view?usp=drive_link',
@@ -508,7 +508,7 @@ export const certifications = [
   {
     id: 18,
     title: 'Fundamentals of Network',
-    issuer: 'Cisco',
+    issuer: 'University of Colorado Boulder',
     date: '2024',
     credentialId: '',
     category: 'Networking',
@@ -517,8 +517,8 @@ export const certifications = [
   {
     id: 19,
     title: 'Master Generative AI',
-    issuer: 'LinkedIn',
-    date: '2024',
+    issuer: 'Udemy',
+    date: 'Aug 2025',
     credentialId: '',
     category: 'AI / ML',
     url: 'https://drive.google.com/file/d/1ScoW6I0fvvPxwuT9lJfpWf9HyCce_lvI/view?usp=drive_link',
@@ -526,11 +526,20 @@ export const certifications = [
   {
     id: 20,
     title: 'ChatGPT-4 Prompt Engineering: Generative AI & LLM',
-    issuer: 'Udemy',
-    date: '2024',
+    issuer: 'Infosys',
+    date: 'Aug 2025',
     credentialId: '',
     category: 'AI / ML',
     url: 'https://drive.google.com/file/d/1V8wMVhuh4M0DxmGUShy2LB5JyX61JJaw/view?usp=drive_link',
+  },
+  {
+    id: 21,
+    title: 'Privacy and Security in Online Social Media',
+    issuer: 'NPTEL',
+    date: 'Oct 2025',
+    credentialId: '',
+    category: 'Security',
+    url: 'https://drive.google.com/file/d/1Bt5tsSDDtyR8ZHBJQm8iVw1NWA7vRD1R/view?usp=drive_link',
   },
 ];
 
