@@ -102,11 +102,21 @@ export default function Resume() {
 
               <div className="flex flex-col gap-4">
                 <a
+                  href="/Akshit_jain_master_CV.pdf"
+                  download="Akshit_jain_master_CV.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 hover:scale-105 active:scale-95"
+                >
+                  <Download size={18} /> Download Master Resume
+                </a>
+
+                <a
                   href={personal.resume}
                   download
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-zinc-900 text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 hover:scale-105 active:scale-95"
+                  className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-bold text-sm px-8 py-4 rounded-full bg-white hover:bg-blue-500 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
                 >
                   <Download size={18} /> Download Resume
                 </a>
@@ -114,7 +124,7 @@ export default function Resume() {
                 <a
                   href="#contact"
                   onClick={handleSmooth('#contact')}
-                  className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-bold text-sm px-8 py-4 rounded-full bg-white hover:bg-zinc-50 transition-all duration-300"
+                  className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-bold text-sm px-8 py-4 rounded-full bg-white hover:bg-zinc-50 transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
                 >
                   <Mail size={18} /> Contact Me
                 </a>
@@ -122,7 +132,7 @@ export default function Resume() {
                 <a
                  href="#projects"
                  onClick={handleSmooth('#projects')}
-                 className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-semibold text-[15px] px-6 py-4 rounded-xl bg-white hover:bg-zinc-50 hover:-translate-y-0.5 transition-all"
+                 className="w-full inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-800 font-semibold text-[15px] px-6 py-4 rounded-xl bg-white hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
                 >
                   View Projects <ArrowUpRight size={18} className="text-zinc-400" />
                 </a>

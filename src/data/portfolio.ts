@@ -560,7 +560,7 @@ export const codingProfiles = {
   leetcode: {
     username: 'AkshitJain__1',
     url: 'https://leetcode.com/u/AkshitJain__1/',
-    solved: '100+',
+    solved: '150+',
     ranking: '',
   },
   gfg: {

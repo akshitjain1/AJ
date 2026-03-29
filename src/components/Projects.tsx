@@ -159,7 +159,14 @@ function ProjectCardContent({ project }: { project: any }) {
     <div className="p-8 md:p-10 flex flex-col flex-1">
       <div className="flex items-start justify-between gap-4 mb-4">
         <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
-          {project.title}
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:underline underline-offset-4"
+          >
+            {project.title}
+          </a>
         </h3>
         <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
       </div>
