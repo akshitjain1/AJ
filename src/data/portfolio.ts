@@ -94,7 +94,7 @@ export const skillsMarquee = [
   'Django', 'Flask', 'Streamlit', 'React', 'Bootstrap',
   'Machine Learning', 'PyTorch', 'Matplotlib',
   'Pandas', 'NumPy', 'Scikit-learn', 'MySQL', 'Git',
-  'Jupyter', 'Tesseract OCR', 'Gemini API', 'K-Modes',
+  'Jupyter', 'Tesseract OCR', 'Gemini API', 'K-Modes', 'Folium',
 ];
 
 export const skillCategories = [
@@ -301,6 +301,30 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Employee_management_system',
     demo: '',
     featured: true,
+  },
+  {
+    id: 13,
+    title: 'Smart India Mapping',
+    subtitle: 'Big Data Analytics',
+    description:
+      'A big data analytics project that visualizes air pollution trends across Indian cities using geospatial mapping and demographic insights. Analyzes 29,000+ AQI records from government and Kaggle datasets, generates PM10 trend charts, AQI city rankings, interactive Folium heatmaps, and population-vs-pollution scatter analysis. Combines environmental, demographic, and geospatial data to reveal pollution hotspots and urban density correlations across India.',
+    image: '/projects/smart-india-mapping.png',
+    tags: ['Python', 'Pandas', 'Matplotlib', 'Folium', 'OpenCV', 'Big Data'],
+    category: 'Data Science',
+    github: 'https://github.com/akshitjain1/Smart-India-Mapping-using-Big-Data',
+    demo: '',
+    featured: true,
+    gallery: [
+      { src: '/projects/smart-india-mapping/top10_aqi.png', caption: 'Top 10 Most Polluted Cities by AQI' },
+      { src: '/projects/smart-india-mapping/pm10_analysis.png', caption: 'Average PM10 Levels Across Cities (2013–2016)' },
+      { src: '/projects/smart-india-mapping/population_vs_aqi.png', caption: 'Population vs Pollution (AQI) Correlation' },
+    ],
+    insights: [
+      'Highly populated cities tend to exhibit higher pollution levels',
+      'Ahmedabad recorded the highest average AQI (~355) among all cities',
+      'Heatmap reveals concentrated pollution hotspots in North India',
+      'Pollution patterns correlate strongly with urban density and industrialization',
+    ],
   },
 ];
 
