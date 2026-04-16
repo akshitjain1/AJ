@@ -172,7 +172,7 @@ export default function Resume() {
               <p className="text-xs text-zinc-400 mt-0.5">A personal introduction & story</p>
             </div>
             <a
-              href="/Akshit_jain_video_CV.mp4"
+              href="https://archive.org/download/akshit-jain-video-cv/Akshit_jain_video_CV.mp4"
               download
               className="inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 text-zinc-600 px-4 py-2 rounded-xl hover:bg-zinc-50 hover:-translate-y-0.5 transition-all duration-200"
             >
@@ -212,7 +212,7 @@ export default function Resume() {
                   }
                 }}
               >
-                <source src="/Akshit_jain_video_CV.mp4" type="video/mp4" />
+                <source src="https://archive.org/download/akshit-jain-video-cv/Akshit_jain_video_CV.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             )}
