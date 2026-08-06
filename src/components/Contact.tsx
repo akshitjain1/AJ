@@ -324,7 +324,7 @@ export default function Contact() {
                   { icon: Github, label: 'GitHub', href: personal.social.github, handle: '@akshitjain1' },
                   { icon: Linkedin, label: 'LinkedIn', href: personal.social.linkedin, handle: 'Akshit Jain' },
                   { icon: Twitter, label: 'Twitter', href: personal.social.twitter, handle: '@akshitjain' },
-                  { icon: Instagram, label: 'Instagram', href: personal.social.instagram, handle: '@akshitjain__1' },
+                  { icon: Instagram, label: 'Instagram', href: personal.social.instagram, handle: '@akshitjain.in' },
                 ].map(({ icon: Icon, label, href, handle }) => (
                   <a
                     key={label}

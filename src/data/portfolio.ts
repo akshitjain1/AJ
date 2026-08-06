@@ -24,7 +24,7 @@ export const personal = {
     github: 'https://github.com/akshitjain1',
     linkedin: 'https://www.linkedin.com/in/akshit-jain-b75a6028b',
     twitter: 'https://twitter.com/akshitjain',
-    instagram: 'https://instagram.com/akshitjain__1',
+    instagram: 'https://instagram.com/akshitjain.in',
     leetcode: 'https://leetcode.com/u/AkshitJain__1/',
     gfg: 'https://www.geeksforgeeks.org/user/akshitjain__1/',
   },
