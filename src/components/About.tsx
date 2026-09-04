@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { personal } from '@/data/portfolio';
-import { ArrowUpRight, MapPin, BookOpen, Cpu } from 'lucide-react';
+import { ArrowUpRight, MapPin, BookOpen, Cpu, Briefcase } from 'lucide-react';
 
 // Animated number counter — fires once when entering viewport
 function StatCounter({ value, label }: { value: string; label: string }) {
@@ -119,9 +119,9 @@ export default function About() {
             {/* Key cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
               {[
-                { icon: BookOpen, label: 'Education', value: '3rd Year BTech', sub: 'LPU, Phagwara', theme: 'bg-indigo-50 text-indigo-700 border-indigo-100 hover:bg-indigo-500 hover:text-white' },
-                { icon: Cpu, label: 'Focus', value: 'Machine Learning', sub: 'AI & Data Science', theme: 'bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-500 hover:text-white' },
-                { icon: ArrowUpRight, label: 'Technical', value: '5+ Languages', sub: 'Building & Learning', theme: 'bg-zinc-50 text-zinc-700 border-zinc-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900' },
+                { icon: Briefcase, label: 'Currently', value: 'AI SWE Intern', sub: 'Centific', theme: 'bg-zinc-50 text-zinc-700 border-zinc-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900' },
+                { icon: BookOpen, label: 'Education', value: 'Final Year BTech', sub: 'LPU, Phagwara', theme: 'bg-indigo-50 text-indigo-700 border-indigo-100 hover:bg-indigo-500 hover:text-white' },
+                { icon: Cpu, label: 'Focus', value: 'AI & Machine Learning', sub: 'Models, APIs & Interfaces', theme: 'bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-500 hover:text-white' },
               ].map(({ icon: Icon, label, value, sub, theme }) => (
                 <div
                   key={label}

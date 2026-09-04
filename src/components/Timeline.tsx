@@ -2,8 +2,47 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, Award } from 'lucide-react';
-import { education } from '@/data/portfolio';
+import { GraduationCap, Award, Briefcase } from 'lucide-react';
+import { education, experience } from '@/data/portfolio';
+
+type JourneyEntry = {
+  key: string;
+  kind: 'Experience' | 'Education';
+  /* role @ company, or degree @ institution */
+  heading: string;
+  organisation: string;
+  location: string;
+  period: string;
+  description: string;
+  highlights: string[];
+  current: boolean;
+};
+
+/* Work history first, then academic history — both newest first. */
+const journey: JourneyEntry[] = [
+  ...experience.map((e) => ({
+    key: `exp-${e.id}`,
+    kind: 'Experience' as const,
+    heading: e.role,
+    organisation: e.company,
+    location: e.location,
+    period: e.period,
+    description: e.description,
+    highlights: e.highlights,
+    current: e.current,
+  })),
+  ...education.map((e) => ({
+    key: `edu-${e.id}`,
+    kind: 'Education' as const,
+    heading: e.degree,
+    organisation: e.institution,
+    location: e.location,
+    period: e.period,
+    description: e.description,
+    highlights: e.highlights,
+    current: e.current,
+  })),
+];
 
 const headReveal = {
   hidden: {},
@@ -33,7 +72,7 @@ export default function Timeline() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">07 — Education</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">07 — Experience &amp; Education</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY
               <br />
@@ -41,7 +80,7 @@ export default function Timeline() {
             </motion.h2>
           </div>
           <motion.p variants={headItem} className="max-w-xs text-zinc-500 text-sm leading-relaxed md:text-right">
-            A timeline of my academic milestones and professional growth.
+            Where I&apos;ve worked and studied — the roles and milestones that shaped how I build.
           </motion.p>
         </motion.div>
 
@@ -56,8 +95,8 @@ export default function Timeline() {
           />
 
           <div className="flex flex-col gap-8">
-            {education.map((item, i) => (
-              <div key={item.id} className="flex gap-8 md:gap-12 items-start group relative">
+            {journey.map((item) => (
+              <div key={item.key} className="flex gap-8 md:gap-12 items-start group relative">
                 {/* Timeline dot */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
@@ -86,9 +125,17 @@ export default function Timeline() {
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <GraduationCap size={14} className="text-zinc-400" />
-                        <span className="text-xs uppercase tracking-widest text-zinc-400 font-medium">
-                          Education
+                        {item.kind === 'Experience' ? (
+                          <Briefcase size={14} className="text-indigo-400" />
+                        ) : (
+                          <GraduationCap size={14} className="text-zinc-400" />
+                        )}
+                        <span
+                          className={`text-xs uppercase tracking-widest font-medium ${
+                            item.kind === 'Experience' ? 'text-indigo-500' : 'text-zinc-400'
+                          }`}
+                        >
+                          {item.kind}
                         </span>
                         {item.current && (
                           <span className="flex items-center gap-1 text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">
@@ -98,7 +145,7 @@ export default function Timeline() {
                         )}
                       </div>
                       <h3 className="font-display font-bold uppercase text-xl md:text-2xl text-zinc-900 tracking-tight leading-tight">
-                        {item.degree}
+                        {item.heading}
                       </h3>
                     </div>
                     <span className="text-xs text-zinc-400 font-medium bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full whitespace-nowrap">
@@ -106,8 +153,12 @@ export default function Timeline() {
                     </span>
                   </div>
 
-                  <p className="font-medium text-zinc-700 text-sm mb-1">{item.institution}</p>
-                  <p className="text-zinc-400 text-xs mb-4">{item.location}</p>
+                  <p className="font-medium text-zinc-700 text-sm mb-1">{item.organisation}</p>
+                  {item.location ? (
+                    <p className="text-zinc-400 text-xs mb-4">{item.location}</p>
+                  ) : (
+                    <div className="mb-4" />
+                  )}
 
                   <p className="text-zinc-500 text-sm leading-relaxed mb-5">{item.description}</p>
 
@@ -150,11 +201,12 @@ export default function Timeline() {
                   What&apos;s Next
                 </p>
                 <h3 className="font-display font-extrabold uppercase text-3xl md:text-5xl text-zinc-700 tracking-tighter mb-6 leading-none">
-                  ACTIVELY SEEKING OPPORTUNITIES
+                  OPEN TO FULL-TIME ROLES
                 </h3>
                 <p className="text-zinc-500 text-sm md:text-md leading-relaxed mb-8 max-w-xl">
-                  I&apos;m actively seeking opportunities in machine learning and software development. My goal is
-                  to work on projects that make a real impact while continuing to learn and grow as a developer.
+                  I&apos;m interning at Centific while finishing my final year, and I&apos;m open to full-time AI
+                  and software engineering roles from 2027. I want to keep working on systems where the modelling
+                  and the engineering both have to be right.
                 </p>
                 <a
                   href="#contact"

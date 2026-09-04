@@ -209,7 +209,7 @@ export default function Navbar() {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
                   <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest whitespace-nowrap">
-                    Available for opportunities
+                    Open to full-time roles
                   </span>
                 </motion.div>
               )}
@@ -273,7 +273,7 @@ export default function Navbar() {
               <div className="pt-3 border-t border-zinc-100 flex gap-3">
                 <span className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-full border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                  Available for opportunities
+                  Open to full-time roles
                 </span>
                 <a
                   href="#contact"

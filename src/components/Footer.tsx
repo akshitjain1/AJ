@@ -41,7 +41,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
-              ML Engineer & Developer building intelligent solutions. Always learning, always growing.
+              AI Software Engineer building intelligent systems end-to-end — models, APIs, and the interfaces around them.
             </p>
             <div className="flex items-center gap-4 mt-5">
               {[
@@ -96,7 +96,7 @@ export default function Footer() {
               <p className="text-sm text-zinc-500">{personal.location}</p>
               <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 mt-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                Available for opportunities
+                Open to full-time roles
               </span>
             </div>
           </div>

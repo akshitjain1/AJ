@@ -1,6 +1,6 @@
 # Akshit Jain — Portfolio
 
-A premium, highly interactive developer portfolio built with **Next.js 14**, **Framer Motion**, and **Tailwind CSS**. This portfolio showcases Machine Learning expertise and Full-Stack development skills with a focus on smooth aesthetics and professional micro-animations.
+A premium, highly interactive developer portfolio built with **Next.js 14**, **Framer Motion**, and **Tailwind CSS**. It showcases AI/ML work alongside full-stack engineering, with a focus on smooth aesthetics and professional micro-animations.
 
 ![Portfolio Preview](/public/projects/portfolio.png)
 
@@ -14,6 +14,8 @@ Experience the live site at: **[akshitjain.vercel.app](https://akshitjain.vercel
 - **Interactive Tech Stack**: Section headings with color-shift on hover and skill cards with pop-out elevation effects.
 - **Live Counters**: Subtle pulsing animations on statistics (Languages, Frameworks, Tools) to make the data feel alive.
 - **Handcrafted UI/UX**: Professional hover states, platform-branded social links (LinkedIn/Twitter/Instagram), and smooth-scroll navigation.
+- **Unified Journey Timeline**: Work experience and education rendered on one scroll-driven timeline, typed and distinguished by role.
+- **Project Detail Modals**: Per-project galleries and key-insight breakdowns, with graceful handling of projects that have no public repo.
 - **Mobile Responsive**: Fully optimized for all screen sizes from mobile to ultra-wide displays.
 - **Unicorn Studio Integration**: Interactive background animations for a premium, futuristic aesthetic.
 
@@ -70,7 +72,7 @@ The project is ready to be deployed on **Vercel**.
 
 ## 📩 Contact
 
-**Akshit Jain** — Machine Learning Engineer
+**Akshit Jain** — AI Software Engineer
 - Email: [akshitjainonly1@gmail.com](mailto:akshitjainonly1@gmail.com)
 - LinkedIn: [Akshit Jain](https://www.linkedin.com/in/akshit-jain-b75a6028b)
 - GitHub: [@akshitjain1](https://github.com/akshitjain1)

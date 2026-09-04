@@ -188,7 +188,7 @@ export default function CodingProfiles() {
           </h3>
           <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {[
-              { label: 'Total Repos', value: '20+' },
+              { label: 'Total Repos', value: '50+' },
               { label: 'Contributions', value: '350+' },
               { label: 'Stars Generated', value: '2' },
               { label: 'Primary Language', value: 'Python' },

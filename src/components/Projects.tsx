@@ -27,9 +27,9 @@ export default function Projects() {
   } else if (activeCategory === 'Web Applications') {
     filteredProjects = projects.filter((p) => p.category === 'Web Application' || p.category === 'Web Development');
   } else if (activeCategory === 'Desktop Applications') {
-    filteredProjects = projects.filter((p) => p.category === 'Desktop Application');
+    filteredProjects = projects.filter((p) => p.category === 'Desktop Application' || p.category === 'Simulation');
   } else if (activeCategory === 'AI Projects') {
-    filteredProjects = projects.filter((p) => p.category === 'Machine Learning');
+    filteredProjects = projects.filter((p) => p.category === 'Machine Learning' || p.category === 'Computer Vision');
   } else if (activeCategory === 'Data Science') {
     filteredProjects = projects.filter((p) => p.category === 'Data Science');
   }
@@ -114,21 +114,33 @@ export default function Projects() {
                       {project.category}
                     </span>
                   </div>
-                  
+
+                  {/* Status badge — e.g. work still underway */}
+                  {(project as any).status && (
+                    <div className="absolute top-6 right-6 z-10">
+                      <span className="flex items-center gap-1.5 bg-emerald-500/95 backdrop-blur-md text-white text-[10px] uppercase tracking-[0.2em] font-bold px-4 py-2 rounded-full shadow-xl">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse inline-block" />
+                        {(project as any).status}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Gradient Overlay for better contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Hover Actions */}
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 scale-90 group-hover:scale-100 z-20">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-zinc-900 hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-2xl"
-                      title="View Code"
-                    >
-                      <Github size={20} />
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-zinc-900 hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-2xl"
+                        title="View Code"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
                     {project.demo && (
                       <a
                         href={project.demo}
@@ -140,13 +152,13 @@ export default function Projects() {
                         <ExternalLink size={20} />
                       </a>
                     )}
-                    {(project as any).gallery && (
+                    {((project as any).gallery || (project as any).insights) && (
                       <button
                         onClick={(e) => { e.stopPropagation(); setSelectedProject(project); }}
                         className="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-500 text-white hover:bg-emerald-600 transition-all duration-300 shadow-2xl"
                         title="View Details"
                       >
-                        <BarChart3 size={20} />
+                        {(project as any).gallery ? <BarChart3 size={20} /> : <Lightbulb size={20} />}
                       </button>
                     )}
                   </div>
@@ -182,14 +194,22 @@ function ProjectCardContent({ project, onOpenDetail }: { project: any; onOpenDet
     <div className="p-8 md:p-10 flex flex-col flex-1">
       <div className="flex items-start justify-between gap-4 mb-4">
         <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:underline underline-offset-4"
-          >
-            {project.title}
-          </a>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline underline-offset-4"
+            >
+              {project.title}
+            </a>
+          ) : hasDetail ? (
+            <button onClick={onOpenDetail} className="text-left hover:underline underline-offset-4">
+              {project.title}
+            </button>
+          ) : (
+            project.title
+          )}
         </h3>
         <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
       </div>
@@ -219,7 +239,7 @@ function ProjectCardContent({ project, onOpenDetail }: { project: any; onOpenDet
           className="mb-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 hover:text-emerald-700 transition-colors group/detail"
         >
           <BarChart3 size={14} className="group-hover/detail:scale-110 transition-transform" />
-          View Outputs & Insights
+          {project.gallery ? 'View Outputs & Insights' : 'View Project Details'}
         </button>
       )}
 
@@ -298,6 +318,12 @@ function ProjectDetailModal({ project, onClose }: { project: any; onClose: () =>
             {project.subtitle && (
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">
                 {project.subtitle}
+              </span>
+            )}
+            {project.status && (
+              <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+                {project.status}
               </span>
             )}
           </div>

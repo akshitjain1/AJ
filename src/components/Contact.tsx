@@ -350,10 +350,10 @@ export default function Contact() {
             <div className="border border-emerald-200 rounded-2xl p-6 bg-emerald-50 hover:shadow-md hover:-translate-y-1 transition-all">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                <p className="text-sm font-semibold text-emerald-800">Available for opportunities</p>
+                <p className="text-sm font-semibold text-emerald-800">Open to full-time roles</p>
               </div>
               <p className="text-xs text-emerald-700 leading-relaxed">
-                Open to internships, collaborations, and full-time roles in ML engineering and software development.
+                Currently interning at Centific and finishing my final year. Open to full-time AI and software engineering roles, plus collaborations along the way.
               </p>
             </div>
           </motion.div>

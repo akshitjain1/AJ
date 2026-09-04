@@ -62,13 +62,13 @@ export default function Resume() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
         >
           <div>
-            <motion.p variants={headItem} className="section-label mb-3">06 — Experience</motion.p>
+            <motion.p variants={headItem} className="section-label mb-3">06 — Resume</motion.p>
             <motion.h2 variants={headItem} className="font-display font-extrabold uppercase text-5xl md:text-7xl lg:text-8xl text-zinc-900 leading-none tracking-tight">
               MY <br /> RESUME
             </motion.h2>
           </div>
           <motion.p variants={headItem} className="max-w-xs text-zinc-500 text-sm leading-relaxed md:text-right font-light">
-            A comprehensive overview of my professional experience, education, and technical background.
+            My CV in two forms — the document, and a short video introduction.
           </motion.p>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function Resume() {
                 Let&apos;s Work Together
               </h3>
               <p className="text-zinc-500 text-sm leading-relaxed mb-10 font-medium">
-                I&apos;m currently available for full-time opportunities and freelance projects. Let&apos;s discuss how I can bring value to your team.
+                I&apos;m interning at Centific while finishing my final year, and I&apos;m open to full-time AI and software engineering roles. Let&apos;s talk about what I could build with your team.
               </p>
 
               <div className="flex flex-col gap-4">
@@ -147,7 +147,7 @@ export default function Resume() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
                 <p className="text-sm font-bold text-emerald-800 uppercase tracking-widest">
-                  Available for opportunities
+                  Open to full-time roles
                 </p>
               </div>
             </div>

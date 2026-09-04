@@ -204,10 +204,10 @@ export default function Hero() {
         >
           <span className="flex items-center gap-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot inline-block" />
-            Available for opportunities
+            Open to full-time roles
           </span>
           <span className="hidden sm:block text-xs text-zinc-400 font-medium tracking-widest uppercase">
-            Phagwara, India
+            Hyderabad, India
           </span>
         </motion.div>
 
@@ -226,7 +226,7 @@ export default function Hero() {
                 01 / INTRO
               </span>
               <span className="hidden md:block font-display text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                {personal.title || "ML ENGINEER"}
+                {personal.title || "AI SOFTWARE ENGINEER"}
               </span>
             </motion.div>
 

@@ -3,14 +3,18 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Akshit Jain — ML Engineer & Developer',
+  title: 'Akshit Jain — AI Software Engineer',
   description:
-    'Akshit Jain is a BTech CSE (ML) student at LPU passionate about Machine Learning, problem-solving, and building impactful software solutions.',
+    'Akshit Jain is an AI Software Engineer Intern at Centific and a final-year BTech CSE (ML) student at LPU, building intelligent systems end-to-end — models, typed APIs, and the interfaces around them.',
   keywords: [
     'Akshit Jain',
+    'AI Software Engineer',
     'Machine Learning',
-    'ML Engineer',
+    'Computer Vision',
     'Python Developer',
+    'Next.js',
+    'FastAPI',
+    'Centific',
     'Portfolio',
     'LPU',
     'AI',
@@ -20,8 +24,8 @@ export const metadata: Metadata = {
     icon: '/favicon.png',
   },
   openGraph: {
-    title: 'Akshit Jain — ML Engineer & Developer',
-    description: 'Machine Learning engineer building impactful AI solutions.',
+    title: 'Akshit Jain — AI Software Engineer',
+    description: 'AI Software Engineer Intern at Centific, building intelligent systems end-to-end.',
     type: 'website',
   },
 };

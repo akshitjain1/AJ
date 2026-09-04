@@ -6,20 +6,20 @@ export const personal = {
   name: 'Akshit Jain',
   firstName: 'Akshit',
   lastName: 'Jain',
-  title: 'Machine Learning Engineer',
-  subtitle: 'ML Engineer & CS Student',
-  tagline: 'Software Engineer specializing in scalable web applications and intelligent systems.',
-  bio: "I am a BTech Computer Science student at Lovely Professional University, focused on developing high-performance software solutions and solving complex engineering problems.\n\nWith hands-on experience in full-stack development and a growing interest in AI-driven systems, I build applications that emphasize scalability, efficiency, and real-world impact. My approach combines strong problem-solving skills with a deep commitment to continuous learning.\n\nI actively strengthen my fundamentals in data structures and algorithms while working on projects that challenge me to think critically and build better systems.",
-  shortBio: 'Software Engineer building scalable web applications and intelligent systems. Passionate about writing clean, efficient code and transforming ideas into robust products.',
-  education: '3rd Year BTech @ LPU',
-  focus: 'Machine Learning',
+  title: 'AI Software Engineer',
+  subtitle: 'AI Software Engineer Intern @ Centific',
+  tagline: 'AI Software Engineer Intern at Centific — I build intelligent systems and the full-stack platforms that carry them.',
+  bio: "I am an AI Software Engineer Intern at Centific and a final-year BTech Computer Science student at Lovely Professional University, working where machine learning meets real software engineering.\n\nMost of what I build is end-to-end: a model or an agent at the core, a typed API around it, and an interface that makes it usable. Recent work spans agent-facing enterprise tooling, a self-hosted learning platform on Next.js and FastAPI, computer vision pipelines, and physics simulation.\n\nI care about systems that hold up — clean data models, tests that run on every change, and backups that actually restore. Alongside that I keep sharpening my fundamentals in data structures and algorithms.",
+  shortBio: 'AI Software Engineer Intern at Centific. I build intelligent systems end-to-end — models, typed APIs, and the interfaces that make them usable.',
+  education: 'Final Year BTech @ LPU',
+  focus: 'AI & Machine Learning',
   languages: '5+ Languages',
   profileImage: '/profile.jpg',
   resume: '/Akshit_jain_CV.pdf',
   email: 'akshitjainonly1@gmail.com',
   phone: '+91 935055XXXX',
   location: 'Phagwara, India',
-  availability: 'Available for opportunities',
+  availability: 'Interning at Centific · Open to full-time roles',
   social: {
     github: 'https://github.com/akshitjain1',
     linkedin: 'https://www.linkedin.com/in/akshit-jain-b75a6028b',
@@ -30,9 +30,9 @@ export const personal = {
   },
   stats: [
     { label: 'Languages Mastered', value: '5+' },
-    { label: 'Projects Built', value: '12+' },
+    { label: 'Projects Built', value: '17+' },
     { label: 'Certifications', value: '20+' },
-    { label: 'LeetCode Solved', value: '100+' },
+    { label: 'LeetCode Solved', value: '150+' },
   ],
   funFacts: [
     'Transforms problems into elegant solutions',
@@ -48,20 +48,22 @@ export const personal = {
 export const capabilities = [
   {
     id: '01',
-    title: 'Machine Learning & AI',
+    title: 'AI & Machine Learning',
     items: [
-      'Supervised & Unsupervised Learning models',
-      'NLP & Clinical Entity Recognition',
-      'Data-driven predictive modelling',
+      'Supervised & unsupervised learning models',
+      'NLP, clinical entity recognition & XAI',
+      'Computer vision with OpenCV',
+      'LLM-powered features & agent interfaces',
     ],
   },
   {
     id: '02',
-    title: 'Web Development',
+    title: 'Full-Stack Engineering',
     items: [
-      'Full-stack Django web applications',
-      'Responsive HTML/CSS/JS frontends',
-      'E-commerce & exam platform systems',
+      'Next.js + TypeScript frontends',
+      'FastAPI & Django backends',
+      'SQLAlchemy data models & migrations',
+      'Tested, deployable end-to-end systems',
     ],
   },
   {
@@ -90,11 +92,13 @@ export const capabilities = [
 //  SKILLS
 // ──────────────────────────────────────────────────────────────────
 export const skillsMarquee = [
-  'Python', 'C++', 'Java', 'JavaScript', 'HTML', 'CSS',
-  'Django', 'Flask', 'Streamlit', 'React', 'Bootstrap',
-  'Machine Learning', 'PyTorch', 'Matplotlib',
-  'Pandas', 'NumPy', 'Scikit-learn', 'MySQL', 'Git',
-  'Jupyter', 'Tesseract OCR', 'Gemini API', 'K-Modes', 'Folium',
+  'Python', 'TypeScript', 'C++', 'Java', 'JavaScript', 'HTML', 'CSS',
+  'Next.js', 'React', 'FastAPI', 'Django', 'Flask', 'Streamlit',
+  'Tailwind CSS', 'Vite', 'Bootstrap',
+  'Machine Learning', 'PyTorch', 'OpenCV', 'Matplotlib',
+  'Pandas', 'NumPy', 'Scikit-learn',
+  'SQLAlchemy', 'PostgreSQL', 'SQLite', 'MySQL', 'Alembic',
+  'Git', 'pytest', 'Pygame', 'Jupyter', 'Tesseract OCR', 'Gemini API',
 ];
 
 export const skillCategories = [
@@ -104,18 +108,21 @@ export const skillCategories = [
       { name: 'Python', level: 90, docUrl: 'https://docs.python.org/3/' },
       { name: 'C', level: 90, docUrl: 'https://en.cppreference.com/w/c' },
       { name: 'C++', level: 80, docUrl: 'https://en.cppreference.com/w/' },
-      { name: 'Java', level: 70, docUrl: 'https://docs.oracle.com/en/java/' },
+      { name: 'TypeScript', level: 80, docUrl: 'https://www.typescriptlang.org/docs/' },
       { name: 'JavaScript', level: 80, docUrl: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'Java', level: 70, docUrl: 'https://docs.oracle.com/en/java/' },
     ],
   },
   {
-    category: 'Web Development',
+    category: 'Web & App Development',
     skills: [
-      { name: 'HTML / CSS', level: 80, docUrl: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+      { name: 'Next.js', level: 80, docUrl: 'https://nextjs.org/docs' },
+      { name: 'React', level: 78, docUrl: 'https://react.dev/' },
+      { name: 'FastAPI', level: 80, docUrl: 'https://fastapi.tiangolo.com/' },
       { name: 'Django', level: 80, docUrl: 'https://docs.djangoproject.com/en/stable/' },
+      { name: 'Tailwind CSS', level: 82, docUrl: 'https://tailwindcss.com/docs' },
+      { name: 'HTML / CSS', level: 85, docUrl: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
       { name: 'Flask', level: 70, docUrl: 'https://flask.palletsprojects.com/' },
-      { name: 'React', level: 65, docUrl: 'https://react.dev/' },
-      { name: 'Bootstrap', level: 75, docUrl: 'https://getbootstrap.com/docs/5.3/' },
       { name: 'Streamlit', level: 75, docUrl: 'https://docs.streamlit.io/' },
     ],
   },
@@ -123,20 +130,23 @@ export const skillCategories = [
     category: 'AI / ML & Data Science',
     skills: [
       { name: 'Machine Learning', level: 80, docUrl: 'https://scikit-learn.org/stable/' },
-      { name: 'Pandas / NumPy', level: 75, docUrl: 'https://pandas.pydata.org/docs/' },
-      { name: 'Scikit-learn', level: 70, docUrl: 'https://scikit-learn.org/stable/' },
-      { name: 'PyTorch', level: 60, docUrl: 'https://pytorch.org/docs/stable/index.html' },
-      { name: 'Matplotlib', level: 70, docUrl: 'https://matplotlib.org/stable/contents.html' },
+      { name: 'Pandas / NumPy', level: 78, docUrl: 'https://pandas.pydata.org/docs/' },
+      { name: 'OpenCV', level: 70, docUrl: 'https://docs.opencv.org/4.x/' },
+      { name: 'Scikit-learn', level: 72, docUrl: 'https://scikit-learn.org/stable/' },
+      { name: 'PyTorch', level: 62, docUrl: 'https://pytorch.org/docs/stable/index.html' },
+      { name: 'Matplotlib', level: 72, docUrl: 'https://matplotlib.org/stable/contents.html' },
     ],
   },
   {
-    category: 'Database & Tools',
+    category: 'Data, Infra & Tools',
     skills: [
+      { name: 'SQLAlchemy', level: 78, docUrl: 'https://docs.sqlalchemy.org/en/20/' },
+      { name: 'PostgreSQL / SQLite', level: 75, docUrl: 'https://www.postgresql.org/docs/' },
       { name: 'MySQL', level: 80, docUrl: 'https://dev.mysql.com/doc/' },
-      { name: 'Git / GitHub', level: 80, docUrl: 'https://git-scm.com/doc' },
+      { name: 'Git / GitHub', level: 85, docUrl: 'https://git-scm.com/doc' },
+      { name: 'pytest', level: 72, docUrl: 'https://docs.pytest.org/en/stable/' },
       { name: 'Jupyter', level: 85, docUrl: 'https://jupyter.org/documentation' },
       { name: 'VS Code', level: 90, docUrl: 'https://code.visualstudio.com/docs' },
-      { name: 'Tesseract OCR', level: 70, docUrl: 'https://tesseract-ocr.github.io/tessdoc/' },
       { name: 'Gemini API', level: 75, docUrl: 'https://ai.google.dev/docs' },
     ],
   },
@@ -146,6 +156,83 @@ export const skillCategories = [
 //  PROJECTS
 // ──────────────────────────────────────────────────────────────────
 export const projects = [
+  {
+    id: 14,
+    title: 'Engineering OS',
+    subtitle: 'Personal Learning Platform',
+    description:
+      'A local-first platform that runs my own engineering curriculum end to end: Learn → Practice → Build → Test → Revise → Track. Next.js 16 and TypeScript on the front, FastAPI and SQLAlchemy 2.0 behind it, over a SQLite database with a PostgreSQL-compatible schema. A 449-topic curriculum is imported from validated YAML/JSON manifests, prerequisites are evaluated server-side to lock and unlock topics, and the whole database is protected by a two-tier backup system that is verified by tests rather than by hope.',
+    image: '/projects/engineering-os.png',
+    tags: ['Next.js', 'TypeScript', 'FastAPI', 'SQLAlchemy', 'Alembic', 'pytest'],
+    category: 'Web Application',
+    github: '',
+    demo: '',
+    featured: true,
+    insights: [
+      'Roadmap walks Track → Level → Subject → Module → Topic, with prerequisite locking evaluated on the backend',
+      'Curriculum ships as YAML/JSON manifests with schema validation and idempotent import — 449 topics',
+      'Two-tier backups: daily snapshots via the SQLite online-backup API, plus a JSON export committed to git',
+      'A full export → restore round trip runs as a pytest on every test run, so the backup is checked continuously',
+    ],
+  },
+  {
+    id: 15,
+    title: 'AETHER_OS',
+    subtitle: 'Centific Hackathon 2.0',
+    description:
+      'An operating-system-style workspace built for autonomous AI agents rather than for people — the agent\'s desktop, not a human dashboard. React 18, TypeScript and Vite, with a custom draggable window manager, a navigation dock, an app launcher, and a live audit feed streaming INFO / ALERT / ACTION events beside real-time SLA and pending-task counters. Five workspace modules cover ingestion, pricing, risk and audit, reports, and system overview, all in a glassmorphic dark enterprise theme.',
+    image: '/projects/aether-os.png',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Context API'],
+    category: 'Web Application',
+    github: '',
+    demo: '',
+    featured: true,
+    insights: [
+      'Designed around the agent as the user — the interface reports to a human rather than being driven by one',
+      'Custom window manager: drag, z-order focus, viewport clamping and auto-offset placement, no library',
+      'Live audit feed with typed log levels and a self-updating stream, wired through React Context',
+      'Five workspace modules — ingestion, pricing engine, risk & audit, reports, dashboard',
+    ],
+  },
+  {
+    id: 16,
+    title: 'Motion & Presence Detection',
+    subtitle: 'Computer Vision',
+    description:
+      'A real-time computer vision pipeline that detects presence in a live camera feed through frame differencing. Frames are converted to grayscale and held in a rolling buffer so movement is measured against an older reference rather than the previous frame alone, then an absolute difference and a binary threshold isolate what actually moved. Built alongside a supporting image-processing toolkit covering resizing, Gaussian blur, Canny edge detection and drawn annotation.',
+    image: '/projects/cv-motion-detection.png',
+    tags: ['Python', 'OpenCV', 'NumPy', 'Frame Differencing'],
+    category: 'Computer Vision',
+    github: '',
+    demo: '',
+    featured: true,
+    status: 'In Progress',
+    insights: [
+      'Rolling frame buffer with a configurable gap, so slow movement is not missed between adjacent frames',
+      'Absolute frame differencing plus binary thresholding separates real movement from a static scene',
+      'Supporting pipeline: grayscale conversion, Gaussian blur, Canny edge detection and canvas annotation',
+      'In progress — turning raw motion deltas into discrete presence events with contours and bounding boxes',
+    ],
+  },
+  {
+    id: 17,
+    title: 'N-Body Gravitational Simulator',
+    subtitle: 'Barnes-Hut Algorithm',
+    description:
+      'A real-time gravitational simulation of 150+ bodies orbiting a central star, running at 60 FPS. Rather than the O(n²) cost of comparing every pair, it rebuilds a quadtree each frame and applies the Barnes-Hut approximation: distant clusters collapse into a single center of mass once their width-to-distance ratio falls below θ, bringing the cost down to O(n log n). Includes a softening factor to keep close encounters stable, recursion guards for coincident bodies, click-to-spawn masses, and a toggleable quadtree overlay that makes the spatial partitioning visible as it happens.',
+    image: '/projects/n-body-simulator.png',
+    tags: ['Python', 'Pygame', 'Barnes-Hut', 'Quadtree', 'Physics'],
+    category: 'Simulation',
+    github: '',
+    demo: '',
+    featured: false,
+    insights: [
+      'Barnes-Hut with a θ threshold reduces force computation from O(n²) to O(n log n)',
+      'Quadtree rebuilt every frame, aggregating total mass and center of mass at each internal node',
+      'Softening factor on the inverse-square law keeps near-collisions numerically stable',
+      'Press Q to overlay the live quadtree and watch the partitioning follow the mass distribution',
+    ],
+  },
   {
     id: 1,
     title: 'Explainable Clinical Entity Recognition',
@@ -337,10 +424,10 @@ export const education = [
     degree: 'BTech in Computer Science (ML)',
     institution: 'Lovely Professional University',
     location: 'Phagwara, Punjab',
-    period: 'July 2023 – Present',
+    period: 'July 2023 – July 2027',
     description:
-      'Bachelor of Technology in Computer Science with specialisation in Machine Learning. 3rd year student passionate about AI/ML and problem-solving. Active participant in hackathons.',
-    highlights: ['Machine Learning specialisation', 'Active hackathon participant', 'Multiple ML research projects'],
+      'Bachelor of Technology in Computer Science with specialisation in Machine Learning. Final-year student, balancing coursework with an industry internship and independent work in AI, computer vision and full-stack engineering.',
+    highlights: ['Machine Learning specialisation', 'Final year', 'Active hackathon participant', 'Multiple ML research projects'],
     current: true,
   },
   {
@@ -370,7 +457,26 @@ export const education = [
 // ──────────────────────────────────────────────────────────────────
 //  EXPERIENCE
 // ──────────────────────────────────────────────────────────────────
-export const experience: any[] = [];
+// NOTE — verify the details below against your actual work at Centific before
+// publishing. `location` is intentionally blank; fill it in (or leave empty and
+// it simply won't render).
+export const experience = [
+  {
+    id: 1,
+    role: 'AI Software Engineer Intern',
+    company: 'Centific',
+    location: '',
+    period: 'June 2026 – Present',
+    description:
+      'Working on AI-driven software for enterprise workflows — building the interfaces, services and data plumbing that turn models and autonomous agents into systems people can actually use.',
+    highlights: [
+      'AI-driven enterprise tooling',
+      'Built AETHER_OS for Centific Hackathon 2.0',
+      'React & TypeScript front-ends',
+    ],
+    current: true,
+  },
+];
 
 // ──────────────────────────────────────────────────────────────────
 //  CERTIFICATIONS (top 10 most relevant)
