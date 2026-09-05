@@ -8,6 +8,59 @@ import { projects } from '@/data/portfolio';
 
 const categories = ['Featured Projects', 'All Projects', 'Web Applications', 'Desktop Applications', 'AI Projects', 'Data Science'];
 
+/* Each category lights its cards in its own accent on hover, so the grid reads
+   as families rather than one undifferentiated wall. Class strings are spelled
+   out in full because Tailwind only picks up literals it can see. */
+type Accent = { card: string; title: string; sub: string; arrow: string };
+
+const CATEGORY_ACCENT: Record<string, Accent> = {
+  'Machine Learning': {
+    card: 'hover:border-indigo-200 hover:bg-indigo-50/70 hover:shadow-indigo-200/50',
+    title: 'group-hover:text-indigo-700',
+    sub: 'text-indigo-500/70',
+    arrow: 'group-hover:text-indigo-500',
+  },
+  'Computer Vision': {
+    card: 'hover:border-emerald-200 hover:bg-emerald-50/70 hover:shadow-emerald-200/50',
+    title: 'group-hover:text-emerald-700',
+    sub: 'text-emerald-600/80',
+    arrow: 'group-hover:text-emerald-500',
+  },
+  'Web Application': {
+    card: 'hover:border-blue-200 hover:bg-blue-50/70 hover:shadow-blue-200/50',
+    title: 'group-hover:text-blue-700',
+    sub: 'text-blue-500/80',
+    arrow: 'group-hover:text-blue-500',
+  },
+  'Web Development': {
+    card: 'hover:border-blue-200 hover:bg-blue-50/70 hover:shadow-blue-200/50',
+    title: 'group-hover:text-blue-700',
+    sub: 'text-blue-500/80',
+    arrow: 'group-hover:text-blue-500',
+  },
+  'Data Science': {
+    card: 'hover:border-amber-200 hover:bg-amber-50/70 hover:shadow-amber-200/50',
+    title: 'group-hover:text-amber-700',
+    sub: 'text-amber-700/80',
+    arrow: 'group-hover:text-amber-500',
+  },
+  'Desktop Application': {
+    card: 'hover:border-purple-200 hover:bg-purple-50/70 hover:shadow-purple-200/50',
+    title: 'group-hover:text-purple-700',
+    sub: 'text-purple-500/80',
+    arrow: 'group-hover:text-purple-500',
+  },
+  Simulation: {
+    card: 'hover:border-orange-200 hover:bg-orange-50/70 hover:shadow-orange-200/50',
+    title: 'group-hover:text-orange-700',
+    sub: 'text-orange-700/80',
+    arrow: 'group-hover:text-orange-500',
+  },
+};
+
+const FALLBACK_ACCENT: Accent = CATEGORY_ACCENT['Machine Learning'];
+const accentFor = (category: string): Accent => CATEGORY_ACCENT[category] || FALLBACK_ACCENT;
+
 const headReveal = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
@@ -98,7 +151,7 @@ export default function Projects() {
                   duration: 0.7, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="group relative rounded-[2.5rem] overflow-hidden border border-zinc-100 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 flex flex-col"
+                className={`accent-card group relative rounded-[2.5rem] overflow-hidden border border-zinc-100 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl flex flex-col ${accentFor(project.category).card}`}
               >
                 {/* Project Image + Hover Overlay */}
                 <div className="aspect-[16/10] bg-zinc-900 relative overflow-hidden shrink-0">
@@ -165,7 +218,11 @@ export default function Projects() {
                 </div>
 
                 {/* Card Content */}
-                <ProjectCardContent project={project} onOpenDetail={() => setSelectedProject(project)} />
+                <ProjectCardContent
+                  project={project}
+                  accent={accentFor(project.category)}
+                  onOpenDetail={() => setSelectedProject(project)}
+                />
               </motion.div>
             ))}
           </motion.div>
@@ -186,14 +243,22 @@ export default function Projects() {
   );
 }
 
-function ProjectCardContent({ project, onOpenDetail }: { project: any; onOpenDetail: () => void }) {
+function ProjectCardContent({
+  project,
+  accent,
+  onOpenDetail,
+}: {
+  project: any;
+  accent: Accent;
+  onOpenDetail: () => void;
+}) {
   const [expanded, setExpanded] = useState(false);
   const hasDetail = !!(project.gallery || project.insights);
 
   return (
     <div className="p-8 md:p-10 flex flex-col flex-1">
       <div className="flex items-start justify-between gap-4 mb-4">
-        <h3 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none group-hover:text-indigo-600 transition-colors duration-300">
+        <h3 className={`font-display font-bold text-2xl md:text-3xl uppercase tracking-tighter text-zinc-900 leading-none transition-colors duration-300 ${accent.title}`}>
           {project.github ? (
             <a
               href={project.github}
@@ -211,11 +276,11 @@ function ProjectCardContent({ project, onOpenDetail }: { project: any; onOpenDet
             project.title
           )}
         </h3>
-        <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+        <ArrowUpRight size={20} className={`text-zinc-300 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all ${accent.arrow}`} />
       </div>
       
       {project.subtitle && (
-        <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500/70 mb-3">{project.subtitle}</p>
+        <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${accent.sub}`}>{project.subtitle}</p>
       )}
 
       <div className="relative mb-6 flex-1">

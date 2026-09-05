@@ -18,6 +18,26 @@ type JourneyEntry = {
   current: boolean;
 };
 
+/* Hovering a card lights it in its own accent, so it is obvious which card is
+   active and whether it is a role or a degree. Class strings are spelled out in
+   full because Tailwind only picks up literals it can see. */
+const ACCENT = {
+  Experience: {
+    card: 'hover:border-indigo-200 hover:bg-indigo-50/70 hover:shadow-indigo-200/50',
+    heading: 'group-hover:text-indigo-700',
+    period: 'group-hover:border-indigo-200 group-hover:bg-indigo-50 group-hover:text-indigo-700',
+    chip: 'group-hover:border-indigo-200 group-hover:bg-indigo-50 group-hover:text-indigo-700',
+    dot: 'group-hover:border-indigo-500',
+  },
+  Education: {
+    card: 'hover:border-emerald-200 hover:bg-emerald-50/70 hover:shadow-emerald-200/50',
+    heading: 'group-hover:text-emerald-700',
+    period: 'group-hover:border-emerald-200 group-hover:bg-emerald-50 group-hover:text-emerald-700',
+    chip: 'group-hover:border-emerald-200 group-hover:bg-emerald-50 group-hover:text-emerald-700',
+    dot: 'group-hover:border-emerald-500',
+  },
+} as const;
+
 /* Work history first, then academic history — both newest first. */
 const journey: JourneyEntry[] = [
   ...experience.map((e) => ({
@@ -109,8 +129,8 @@ export default function Timeline() {
                     className={`w-4 h-4 rounded-full border-2 ${
                       item.current
                         ? 'border-zinc-900 bg-zinc-900 timeline-dot-active'
-                        : 'border-zinc-300 bg-white group-hover:border-zinc-600'
-                    } transition-colors relative`}
+                        : 'border-zinc-300 bg-white'
+                    } ${ACCENT[item.kind].dot} transition-colors relative`}
                   />
                 </motion.div>
 
@@ -120,19 +140,19 @@ export default function Timeline() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex-1 border border-zinc-100 rounded-[2.5rem] p-8 md:p-12 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 z-10"
+                  className={`accent-card flex-1 border border-zinc-100 rounded-[2.5rem] p-8 md:p-12 bg-white shadow-xl shadow-zinc-200/50 hover:shadow-2xl hover:-translate-y-2 z-10 ${ACCENT[item.kind].card}`}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         {item.kind === 'Experience' ? (
-                          <Briefcase size={14} className="text-indigo-400" />
+                          <Briefcase size={14} className="text-indigo-500" />
                         ) : (
-                          <GraduationCap size={14} className="text-zinc-400" />
+                          <GraduationCap size={14} className="text-emerald-500" />
                         )}
                         <span
                           className={`text-xs uppercase tracking-widest font-medium ${
-                            item.kind === 'Experience' ? 'text-indigo-500' : 'text-zinc-400'
+                            item.kind === 'Experience' ? 'text-indigo-500' : 'text-emerald-600'
                           }`}
                         >
                           {item.kind}
@@ -144,11 +164,11 @@ export default function Timeline() {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-display font-bold uppercase text-xl md:text-2xl text-zinc-900 tracking-tight leading-tight">
+                      <h3 className={`font-display font-bold uppercase text-xl md:text-2xl text-zinc-900 tracking-tight leading-tight transition-colors duration-300 ${ACCENT[item.kind].heading}`}>
                         {item.heading}
                       </h3>
                     </div>
-                    <span className="text-xs text-zinc-400 font-medium bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full whitespace-nowrap">
+                    <span className={`text-xs text-zinc-400 font-medium bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full whitespace-nowrap transition-colors duration-300 ${ACCENT[item.kind].period}`}>
                       {item.period}
                     </span>
                   </div>
@@ -168,7 +188,7 @@ export default function Timeline() {
                     {item.highlights.map((h) => (
                       <span
                         key={h}
-                        className="flex items-center gap-1.5 text-xs text-zinc-600 bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full"
+                        className={`flex items-center gap-1.5 text-xs text-zinc-600 bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full transition-colors duration-300 ${ACCENT[item.kind].chip}`}
                       >
                         <Award size={10} className="text-zinc-400" />
                         {h}
