@@ -15,10 +15,16 @@ export const personal = {
   focus: 'AI & Machine Learning',
   languages: '5+ Languages',
   profileImage: '/profile.jpg',
+  website: 'https://akshitjain.vercel.app',
+  headline: 'Machine Learning | AI Systems | Scalable Engineering',
+  summary:
+    'Computer Science Engineering student specialising in Machine Learning with hands-on experience building AI systems across machine learning, NLP, OCR, and enterprise automation. Contributing to agent orchestration, LLM workflows, REST API integration, and enterprise Proofs of Concept at Centific. Experienced in designing modular ML pipelines covering data ingestion, validation, transformation, model training, and deployment, with a growing focus on MLOps, reproducibility, data and model versioning, experiment tracking, and scalable ML system design.',
   resume: '/Akshit_jain_CV.pdf',
+  masterResume: '/Akshit_jain_master_CV.pdf',
+  videoResume: 'https://archive.org/download/akshit-jain-video-cv/Akshit_jain_video_CV.mp4',
   email: 'akshitjainonly1@gmail.com',
-  phone: '+91 935055XXXX',
-  location: 'Phagwara, India',
+  phone: '+91 9350558221',
+  location: 'Hyderabad, India',
   availability: 'Interning at Centific · Open to full-time roles',
   social: {
     github: 'https://github.com/akshitjain1',
@@ -32,7 +38,7 @@ export const personal = {
     { label: 'Languages Mastered', value: '5+' },
     { label: 'Projects Built', value: '17+' },
     { label: 'Certifications', value: '20+' },
-    { label: 'LeetCode Solved', value: '150+' },
+    { label: 'LeetCode Solved', value: '170+' },
   ],
   funFacts: [
     'Transforms problems into elegant solutions',
@@ -152,10 +158,70 @@ export const skillCategories = [
   },
 ];
 
+/** Skills listed on the resume that the site's skill sections don't show. */
+export const additionalSkills: Record<string, string[]> = {
+  'Machine Learning': [
+    'NLP', 'OCR', 'Classification', 'Regression', 'Clustering', 'K-Modes', 'Model Training Pipelines',
+    'Data Processing', 'Dataset Engineering', 'LLM Applications', 'Agentic AI', 'Healthcare AI',
+  ],
+  Frameworks: ['TensorFlow', 'Seaborn', 'React'],
+  'MLOps & Engineering': [
+    'Docker', 'Modular Architecture', 'Reproducible ML Workflows', 'Experiment Tracking',
+    'Data and Model Versioning', 'Scalable ML System Design',
+  ],
+  'Enterprise & Integration': ['Microsoft Dynamics 365', 'Dataverse', 'Vercel'],
+  'Core Concepts': ['Data Structures & Algorithms', 'Problem Solving', 'Optimization Techniques', 'System Design Fundamentals'],
+  'Soft Skills': ['Teamwork', 'Leadership', 'Adaptability', 'Critical Thinking', 'Communication'],
+};
+
 // ──────────────────────────────────────────────────────────────────
 //  PROJECTS
 // ──────────────────────────────────────────────────────────────────
+// `insights` render in the project modal. `details` are extra resume
+// bullets the site doesn't render (the AI assistant reads every field).
+// `showOnSite: false` keeps a project out of the grid, e.g. until it has
+// an image. The assistant still knows about it.
 export const projects = [
+  {
+    id: 18,
+    title: 'Centific AI Pricing Intelligence Agent',
+    subtitle: 'Centific AI Premier Hackathon 2.0 — Winner',
+    description:
+      'An AI-driven agentic system that automates enterprise pricing intelligence workflows, from RFP ingestion to pricing output. Built by a cross-functional team at the Centific AI Premier Hackathon 2.0.',
+    image: '',
+    tags: ['Agentic AI', 'Dataset Engineering', 'Workflow Automation', 'Hackathon'],
+    category: 'Machine Learning',
+    github: '',
+    demo: '',
+    featured: true,
+    showOnSite: false,
+    details: [
+      'Collaborated in a cross-functional team to analyse BRDs (business requirement documents), identify workflow gaps, and design an MVP architecture.',
+      'Generated and processed 1,55,000+ (155,000+) synthetic records for training, testing, and workflow validation.',
+      'Won the Centific AI Premier Hackathon 2.0, which led to a 6-month internship offer from Centific.',
+      'AETHER_OS is listed separately as built for Centific Hackathon 2.0. How the two relate is not documented.',
+    ],
+  },
+  {
+    id: 19,
+    title: 'Vehicle Insurance MLOps Pipeline',
+    subtitle: 'End-to-end ML Pipeline',
+    description:
+      'A modular end-to-end ML pipeline for vehicle insurance prediction with dedicated data ingestion, validation, transformation, model training, and prediction components.',
+    image: '',
+    tags: ['Python', 'Scikit-learn', 'MongoDB', 'AWS', 'Docker', 'GitHub Actions', 'MLOps'],
+    category: 'Machine Learning',
+    github: '',
+    demo: '',
+    featured: true,
+    showOnSite: false,
+    details: [
+      'Reusable configuration, artifact, exception-handling, logging, and utility layers for maintainable, reproducible ML workflows.',
+      'MongoDB-based data ingestion.',
+      'Designed an AWS/Docker deployment workflow involving S3, ECR, EC2, and GitHub Actions for CI/CD.',
+      'No model metrics are documented for this project.',
+    ],
+  },
   {
     id: 14,
     title: 'Engineering OS',
@@ -245,6 +311,13 @@ export const projects = [
     github: 'https://github.com/akshitjain1/EHR-CNER-Explainable',
     demo: '',
     featured: true,
+    details: [
+      'End-to-end transformer-based NLP pipeline extracting clinical entities from electronic health records while protecting patient privacy.',
+      'De-identification with more than 10 PHI masking patterns.',
+      'Explainable AI components that make model outputs interpretable.',
+      'Approximately 72% accuracy on biomedical named entity recognition with domain-specific datasets.',
+      'Structured workflow for preprocessing, tokenisation, model training, and inference visualisation.',
+    ],
   },
   {
     id: 2,
@@ -258,6 +331,11 @@ export const projects = [
     github: 'https://github.com/akshitjain1/ra-kmodes-stratification',
     demo: 'https://ra-kmodes-stratification.streamlit.app/',
     featured: true,
+    details: [
+      'Unsupervised ML pipeline using K-Modes clustering to find interpretable patient subgroups from categorical clinical and socioeconomic data (comorbidities, lifestyle, demographics).',
+      'Interactive Streamlit interface for cluster exploration and subgroup-level patterns, with visualisations of cluster distributions.',
+      'Contributed to a patent-related methodology for structured patient stratification. The portfolio card says "Patent filed: K-Modes Clustering on Categorical Comorbidity and Symptom Data".',
+    ],
   },
   {
     id: 3,
@@ -271,6 +349,11 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Handwritten-Classifier.git',
     demo: 'https://handwritten-classifier-by-aj.streamlit.app/',
     featured: true,
+    details: [
+      'AI-assisted document processing pipeline: OCR text extraction, grammar correction, content classification, rubric-based scoring, and automated feedback.',
+      'Gemini API generates feedback and improves evaluation consistency.',
+      'Modular Streamlit workflow.',
+    ],
   },
   {
     id: 4,
@@ -284,6 +367,10 @@ export const projects = [
     github: 'https://github.com/akshitjain1/exam_platform',
     demo: '',
     featured: true,
+    details: [
+      'Supports MCQ, subjective, and mixed assessments with automated evaluation of objective questions.',
+      'Email OTP verification, admin dashboard for exam and user management, password reset and email notifications.',
+    ],
   },
   {
     id: 5,
@@ -297,6 +384,9 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Maze-Path-Finder/',
     demo: 'https://akshitjain1.github.io/Maze-Path-Finder/',
     featured: true,
+    details: [
+      'Visualises A*, Dijkstra, BFS and DFS with real-time animation, maze generation, and an algorithm comparison mode.',
+    ],
   },
   {
     id: 6,
@@ -310,6 +400,9 @@ export const projects = [
     github: 'https://github.com/akshitjain1/django_ecommerce_1',
     demo: '',
     featured: false,
+    details: [
+      'Full-stack Django e-commerce for campus users: authentication, product listing, cart, order placement and tracking, admin panel.',
+    ],
   },
   {
     id: 7,
@@ -323,6 +416,10 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Home-Loan-Advisor.git',
     demo: 'https://home-loan-advisor-kh2s8dbmjap8ejhdxl5hxa.streamlit.app/',
     featured: false,
+    details: [
+      'Home-loan eligibility evaluation, EMI calculation and loan simulation across financial scenarios.',
+      'Conversational AI (Gemini API) gives personalised, context-aware recommendations.',
+    ],
   },
   {
     id: 8,
@@ -336,6 +433,9 @@ export const projects = [
     github: 'https://github.com/akshitjain1/your_buddy_speaker.git',
     demo: '',
     featured: false,
+    details: [
+      'Desktop app built with tkinter: googletrans for translation and pyttsx3 for speech, with voice and language selection.',
+    ],
   },
   {
     id: 9,
@@ -388,6 +488,12 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Employee_management_system',
     demo: '',
     featured: true,
+    details: [
+      'Multi-role application with Admin, HR, and Employee dashboards.',
+      'Attendance tracking with overlap detection and validation.',
+      'Task management with file attachments; leave request and approval workflow with role-based access control.',
+      'OTP-based authentication and account security features such as account locking.',
+    ],
   },
   {
     id: 13,
@@ -401,6 +507,9 @@ export const projects = [
     github: 'https://github.com/akshitjain1/Smart-India-Mapping-using-Big-Data',
     demo: '',
     featured: true,
+    details: [
+      'Python and Pandas pipelines to clean, transform, and structure high-volume geographic and socio-economic datasets.',
+    ],
     gallery: [
       { src: '/projects/smart-india-mapping/top10_aqi.png', caption: 'Top 10 Most Polluted Cities by AQI' },
       { src: '/projects/smart-india-mapping/pm10_analysis.png', caption: 'Average PM10 Levels Across Cities (2013–2016)' },
@@ -428,6 +537,7 @@ export const education = [
     description:
       'Bachelor of Technology in Computer Science with specialisation in Machine Learning. Final-year student, balancing coursework with an industry internship and independent work in AI, computer vision and full-stack engineering.',
     highlights: ['Machine Learning specialisation', 'Final year', 'Active hackathon participant', 'Multiple ML research projects'],
+    grade: 'CGPA 8.32 / 10',
     current: true,
   },
   {
@@ -439,6 +549,7 @@ export const education = [
     description:
       'Higher secondary education with Science stream (PCM). Built strong foundation in Mathematics and Physics.',
     highlights: ['Science stream (PCM)', 'Strong academic performance'],
+    grade: '74.83%',
     current: false,
   },
   {
@@ -450,6 +561,7 @@ export const education = [
     description:
       'Secondary education with excellent academic performance. Developed early interest in computer science.',
     highlights: ['Excellent academic record', 'Early interest in programming'],
+    grade: '78%',
     current: false,
   },
 ];
@@ -474,8 +586,41 @@ export const experience = [
       'Built AETHER_OS for Centific Hackathon 2.0',
       'React & TypeScript front-ends',
     ],
+    // Resume bullets. Not rendered on the site; used by the AI assistant.
+    details: [
+      'The 6-month internship offer came from winning the Centific AI Premier Hackathon 2.0.',
+      'Contributing to an AI-powered IT Help Desk Agent, with work spanning agent orchestration, LLM workflows, REST API integration, and end-to-end system integration.',
+      'Developed a Proof of Concept integrating Microsoft Dynamics 365 with external AI workflows, exploring Dataverse APIs, authentication patterns, and enterprise data retrieval.',
+      'Improved AI workflows through prompt refinement, modular code design, scenario-based testing, debugging, and integration of automation components.',
+    ],
     current: true,
   },
+];
+
+// ──────────────────────────────────────────────────────────────────
+//  ACHIEVEMENTS, TRAINING & CAREER INTERESTS
+// ──────────────────────────────────────────────────────────────────
+export const achievements = [
+  'Winner — Centific AI Premier Hackathon 2.0: built an AI-driven pricing intelligence system, generated 1,55,000+ synthetic records, and secured a 6-month internship offer from Centific.',
+  'Contributed to a patent-related methodology for Rheumatoid Arthritis patient stratification using K-Modes clustering on categorical medical data.',
+  'Participated in the IOT Hackathon (Feb 2024), building AUTO-NO.',
+];
+
+export const training = [
+  {
+    title: 'DSA Summer Training (C++)',
+    provider: 'Hitbullseye',
+    period: 'June 2025 – July 2025',
+    details:
+      'Arrays, strings, linked lists, stacks, queues, trees, graphs, dynamic programming; recursion, greedy, sliding window and STL-based implementations, with a focus on time and space complexity.',
+  },
+];
+
+export const careerInterests = [
+  'Open to full-time AI and software engineering roles.',
+  'Growing focus on MLOps, reproducibility, data and model versioning, experiment tracking, and scalable ML system design.',
+  'Builds systems end-to-end: a model or agent at the core, a typed API around it, and a usable interface.',
+  'Cares about systems that hold up: clean data models, tests on every change, and backups that restore.',
 ];
 
 // ──────────────────────────────────────────────────────────────────

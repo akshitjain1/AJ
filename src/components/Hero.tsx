@@ -207,7 +207,7 @@ export default function Hero() {
             Open to full-time roles
           </span>
           <span className="hidden sm:block text-xs text-zinc-400 font-medium tracking-widest uppercase">
-            Hyderabad, India
+            {personal.location}
           </span>
         </motion.div>
 
