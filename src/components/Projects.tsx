@@ -74,17 +74,19 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('Featured Projects');
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
-  let filteredProjects = projects;
+  // Projects marked showOnSite: false stay out of the grid (the AI assistant still knows them).
+  const siteProjects = projects.filter((p) => p.showOnSite !== false);
+  let filteredProjects = siteProjects;
   if (activeCategory === 'Featured Projects') {
-    filteredProjects = projects.filter((p) => p.featured);
+    filteredProjects = siteProjects.filter((p) => p.featured);
   } else if (activeCategory === 'Web Applications') {
-    filteredProjects = projects.filter((p) => p.category === 'Web Application' || p.category === 'Web Development');
+    filteredProjects = siteProjects.filter((p) => p.category === 'Web Application' || p.category === 'Web Development');
   } else if (activeCategory === 'Desktop Applications') {
-    filteredProjects = projects.filter((p) => p.category === 'Desktop Application' || p.category === 'Simulation');
+    filteredProjects = siteProjects.filter((p) => p.category === 'Desktop Application' || p.category === 'Simulation');
   } else if (activeCategory === 'AI Projects') {
-    filteredProjects = projects.filter((p) => p.category === 'Machine Learning' || p.category === 'Computer Vision');
+    filteredProjects = siteProjects.filter((p) => p.category === 'Machine Learning' || p.category === 'Computer Vision');
   } else if (activeCategory === 'Data Science') {
-    filteredProjects = projects.filter((p) => p.category === 'Data Science');
+    filteredProjects = siteProjects.filter((p) => p.category === 'Data Science');
   }
 
   return (

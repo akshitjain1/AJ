@@ -32,6 +32,7 @@ export const metadata: Metadata = {
 
 import LoadingScreen from '@/components/LoadingScreen';
 import ScrollProgress from '@/components/ScrollProgress';
+import ChatWidget from '@/components/chat/ChatWidget';
 
 export default function RootLayout({
   children,
@@ -53,6 +54,7 @@ export default function RootLayout({
         <ScrollProgress />
         <LoadingScreen />
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
